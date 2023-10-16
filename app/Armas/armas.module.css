@@ -1,0 +1,17 @@
+.main{
+    background-color: #191919;
+    color: #fff;
+}
+.card{
+    width: 30%;
+    height: 90vh;
+    font-size: 14px;
+    margin-top: 1rem;
+    border: solid 1px rgb(106, 191, 244);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.container{
+    display: flex;
+    gap: 1rem;
+}
