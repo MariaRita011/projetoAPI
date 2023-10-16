@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
+import { Header } from '../components/header/header';
+
 
 const listaAgentes = new ListaAgentes();
 
@@ -80,7 +82,10 @@ function page() {
     console.log(listaAgentes.agentes)
 
     return (
+                    
+        
         <div>
+            <Header/>
             <button onClick={mudar}>mudar</button>
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
                 <input

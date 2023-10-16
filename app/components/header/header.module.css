@@ -1,0 +1,21 @@
+.header{
+    background-color: rgba(0, 0, 0, 5);
+    padding: 2.5%;
+    display: flex;
+}
+
+
+
+.links {
+    display: flex;
+    margin-left: 70%;
+}
+
+
+
+.linka:hover{
+    color: #2a2929;
+    background-color: #dedede;
+    border-radius: 6px;
+    height: 60%;
+}

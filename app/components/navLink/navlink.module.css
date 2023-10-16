@@ -1,0 +1,12 @@
+.textLink {
+    color: #7b7777;
+    padding: 1rem;
+    border-radius: 8px;
+    width: 20%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    
+
+}
