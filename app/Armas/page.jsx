@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
+/* import { ApiError } from 'next/dist/server/api-utils'; */
 
 const listaAgentes = new ListaAgentes();
 
@@ -20,6 +21,9 @@ function page() {
 
     const [apiData, setApiData] = useState('');
 
+    console.log("Entrou")
+
+
     useEffect(() => {
         const CardsFecth = async () => {
             try {
@@ -31,6 +35,12 @@ function page() {
         }
         CardsFecth();
     }, [])
+
+    listaAgentes.adicionarDadosApi(apiData)
+
+    const teste = listaAgentes.todos;
+
+    console.log(teste);
 
     function adicionar() {
         listaAgentes.adicionarAgente(nome, descricao, raridade, imagem);
@@ -77,7 +87,7 @@ function page() {
 
     }
 
-    console.log(listaAgentes.agentes)
+    console.log(apiData)
 
     return (
         <div>

@@ -3,14 +3,17 @@ import Agente from "./agente";
 export default class ListaAgentes {
     constructor() {
         this.agentes = [];
+        this.todos = [];
     }
 
-    adicionarAgente(nome, descricao, raridade, imagem) {
-        const novoAgente = new Agente(nome, descricao, raridade, imagem);
+   
+    adicionarAgente(name, description, rarity, image) {
+        const novoAgente = new Agente(name, description, rarity, image);
 
         console.log(novoAgente);
 
         this.agentes.push(novoAgente);
+        console.log(this.dadosApi);
     }
 
     excluirAgente(id) {
@@ -24,16 +27,23 @@ export default class ListaAgentes {
         return agente;
     }
 
-    AtualizarAgente(id, nome, descricao, raridade, imagem) {
+    AtualizarAgente(id, name, description, rarity, image) {
         const agente = this.getAgentePorId(id);
-    
+
         if (agente) {
-            agente.nome = nome;
-            agente.descricao = descricao;
-            agente.raridade = raridade;
-            agente.imagem = imagem;
+            agente.name = name;
+            agente.description = description;
+            agente.rarity = rarity;
+            agente.image = image;
         }
         return this.agentes;
+    }
+
+    adicionarDadosApi(dadosApi){
+        this.todos = {
+            ...this.agentes,
+            ...dadosApi
+        }
     }
 
 }
