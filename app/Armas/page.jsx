@@ -8,47 +8,10 @@ import Agente from '@/models/agente';
 const listaAgentes = new ListaAgentes();
 
 function page() {
-/*     'use client';
-    import React, { useEffect, useState } from "react";
-    import fetchApiData from "../components/apiCaller/fetchApiData";
-    import Header from "../components/header/Header";
-    import styles from "./aulaAPI.module.css";
-    import ListaAgentes from "../../models/ListaAgentes";
-    import Agente from "../../models/Agente";
-    
-    const instanciaLista = new ListaAgentes(); // Crie uma única instância fora do componente
-    
-    export default function Home() {
-      const [listaAgentes, setListaAgentes] = useState([]); // Inicialize com um array vazio
-    
-      const [apiData, setApiData] = useState(null);
-      const [displayName, setDisplayName] = useState("");
-      const [bustPortrait, setBustPortrait] = useState("");
-      const [description, setDescription] = useState("");
-    
-      const handleAddAgente = () => {
-        const novoAgente = new Agente(displayName, bustPortrait, description);
-      
-        // Verifique se o agente já está na lista local
-        if (!listaAgentes.some(agente => agente.displayName === displayName)) {
-          // Se não estiver, adicione-o à lista local
-          const updatedAgentes = [...listaAgentes, novoAgente];
-          setListaAgentes(updatedAgentes);
-        }
-      
-        // Adicione o agente à instância compartilhada
-        instanciaLista.addAgente(novoAgente);
-      
-        // Limpar os campos do formulário
-        setDisplayName("");
-        setBustPortrait("");
-        setDescription("");
-      }; */
-    const [nome, setNome] = useState('')
-    const [lista, setLista] = useState(listaAgentes.agentes)
-    const [descricao, setDescricao] = useState('')
-    const [raridade, setRaridade] = useState('')
-    const [imagem, setImagem] = useState('')
+
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [image, setImage] = useState('')
     const [div1, setDiv1] = useState(true)
     const [div2, setDiv2] = useState(false)
     const [flag, setFlag] = useState(0)
@@ -57,39 +20,23 @@ function page() {
     const [apiData, setApiData] = useState(null);
     const [agentesLista, setAgentesLista] = useState([]);
 
-    /*   useEffect(() => {
-        const fetchData = async () => {
-          try {
-            const data = await fetchApiData();
-            setApiData(data);
-          } catch (error) {
-            // Lidar com erros de chamada à API
-          }
-        };
-        fetchData();
-      }, []);*/
-    
-   
-
     function adicionar() {
-        const novoAgente = new Agente(name, description, rarity)
+        const novoAgente = new Agente(name, description)
         if (!agentesLista.some(agente => agente.name === name)) {
             // Se não estiver, adicione-o à lista local
             const updatedAgentes = [...agentesLista, novoAgente];
             setAgentesLista(updatedAgentes);
-          }
-        
-          // Adicione o agente à instância compartilhada
-          listaAgentes.adicionarAgente(novoAgente);
-       
+        }
+
+        listaAgentes.adicionarAgente(novoAgente);
+
         limparCampos();
     }
 
     function limparCampos() {
-        setNome('');
-        setDescricao('');
-        setRaridade('');
-        setImagem('');
+        setName('');
+        setDescription('');
+        setImage('');
     }
 
     function mudar() {
@@ -97,38 +44,43 @@ function page() {
         setDiv2(!div2);
     }
 
-    function excluir(id) {
-        listaAgentes.excluirAgente(id);
 
-        setLista(listaAgentes.agentes)
-    }
+    const excluir = (param) => {
+        listaAgentes.excluirAgente(param); // Remova o agente da instância compartilhada
+        setAgentesLista(listaAgentes.getListaAgentes()); // Puxa a lista para o varivel local que exibe no map
+    };
 
     function edit(id) {
         const agente = listaAgentes.getAgentePorId(id);
-        setNome(agente.nome);
-        setDescricao(agente.descricao);
-        setRaridade(agente.raridade);
-        setImagem(agente.imagem);
+
+        setName(agente.name);
+        setDescription(agente.description);
+        setImage(agente.image);
 
         setEditButton(true)
         setFlag(id)
-        setLista(listaAgentes.agentes)
+       /*  setLista(listaAgentes.agentes) */
 
     }
 
     function update() {
-        listaAgentes.AtualizarAgente(flag, nome, descricao, raridade, imagem);
+        listaAgentes.AtualizarAgente(flag, name, description, image);
+
+        console.log('update', listaAgentes);
+        
         setFlag(0);
-        setLista(listaAgentes.agentes)
+        setAgentesLista(listaAgentes.agentes)
         setEditButton(false)
         limparCampos()
+        mudar()
 
     }
-    
+
     useEffect(() => {
         const CardsFecth = async () => {
             try {
                 const dados = await Cards();
+                console.log('dados useefect', dados);
                 setApiData(dados)
             } catch (error) {
                 throw error;
@@ -136,24 +88,29 @@ function page() {
         }
         CardsFecth();
     }, [])
-    useEffect(() => {
-        if (apiData && apiData.dados) {
-          apiData.dados.forEach((agenteData) => {
-            const novoAgente = new Agente(
-              agenteData.name,
-              agenteData.description,
-              agenteData.rarity
-            );
-            listaAgentes.adicionarAgente(novoAgente);
-          });
-    
-          // Atualize o estado com a lista de agentes atualizada
-          const updatedAgentes = [...listaAgentes, ...listaAgentes.getListaAgentes()]; // Combine os dados da API com os existentes
-          setAgentesLista(updatedAgentes);
-        }
-      }, [apiData]); 
 
-    console.log(listaAgentes.agentes)
+
+    useEffect(() => {
+        console.log('passo por aq');
+        console.log('apidata', apiData);
+        if (apiData) {
+            console.log('passo por aq 2');
+            apiData.forEach((agenteData) => {
+                const novoAgente = new Agente(
+                    agenteData.name,
+                    agenteData.description,
+                    agenteData.image
+                );
+                listaAgentes.adicionarAgente(novoAgente);
+            });
+
+
+            const updatedAgentes = [...agentesLista, ...listaAgentes.getListaAgentes()]; // Combine os dados da API com os existentes
+            setAgentesLista(updatedAgentes);
+        }
+    }, [apiData]);
+
+    console.log(agentesLista)
 
     return (
         <div>
@@ -161,57 +118,43 @@ function page() {
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
                 <input
                     type={"text"}
-                    value={nome}
-                    name={'nome'}
-                    placeholder={'Nome do agente'}
-                    onChange={(e) => setNome(e.target.value)} />
+                    value={name}
+                    name={'name'}
+                    placeholder={'name do agente'}
+                    onChange={(e) => setName(e.target.value)} />
                 <input
                     type={"text"}
-                    value={descricao}
-                    name={'descricao'}
+                    value={description}
+                    name={'description'}
                     placeholder={'Descrição do agente'}
-                    onChange={(e) => setDescricao(e.target.value)} />
+                    onChange={(e) => setDescription(e.target.value)} />
                 <input
                     type={"text"}
-                    value={raridade}
-                    name={'raridade'}
-                    placeholder={'Raridade do agente'}
-                    onChange={(e) => setRaridade(e.target.value)} />
-                <input
-                    type={"text"}
-                    value={imagem}
-                    name={'imagem'}
-                    placeholder={'Imagem do agente'}
-                    onChange={(e) => setImagem(e.target.value)} />
-                {
-                    editButton ? (
-                        <button onClick={update}>Atualizar</button>
-                    ) : (
-                        <button onClick={adicionar}>Adicionar</button>
-                    )
-                }
+                    value={image}
+                    name={'image'}
+                    placeholder={'image do agente'}
+                    onChange={(e) => setImage(e.target.value)} />
+
+               
+
+{
+    editButton ? (
+        <button onClick={update}>Atualizar</button>
+    ) : (
+        <button onClick={adicionar}>adicionar</button>
+    )
+}
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
                 {
-                    listaAgentes.agentes.map((agente) => (
-                        <div key={agente.id}>
-                            <h1>{agente.nome}</h1>
-                            <button onClick={() => excluir(agente.id)}>Excluir</button>
-                            <button onClick={() => edit(agente.id)}>Editar</button>
-                        </div>
-                    ))
-                }
-
-            </div>
-           <h2>Teste</h2>
-            <div>
-                {
-                    apiData ? (
-                        apiData.map((card) => (
+                    agentesLista ? (
+                        agentesLista.map((card) => (
                             <div key={card.id}>
                                 <h1>{card.name}</h1>
                                 <p>{card.description}</p>
-                              <img src={card.image} alt={card.name} width={264} height={264} /> 
+                                <img src={card.image} alt={card.name} width={264} height={264} />
+                                <button onClick={() => excluir(card)}>Excluir</button>
+                                <button onClick={() => edit(card.id)}>Editar</button>
                             </div>
 
                         ))
@@ -220,7 +163,9 @@ function page() {
                             <p>Carregando..</p>
                         )
                 }
-            </div >
+
+            </div>
+
 
         </div>
     )

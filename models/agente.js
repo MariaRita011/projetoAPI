@@ -1,8 +1,7 @@
 export default class Agente {
-    constructor(name, description, rarity, image) {
+    constructor(name, description,image) {
         this.name = name;
         this.description = description;
-        this.rarity = rarity;
         this.image = image;
         this.id = this.gerarId();
     }
