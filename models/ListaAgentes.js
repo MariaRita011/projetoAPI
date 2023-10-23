@@ -5,12 +5,22 @@ export default class ListaAgentes {
         this.agentes = [];
     }
 
-    adicionarAgente(nome, descricao, raridade, imagem) {
-        const novoAgente = new Agente(nome, descricao, raridade, imagem);
-
-        console.log(novoAgente);
+    adicionarAgente( novoAgente/* nome, descricao, raridade, imagem */) {
+      /*   const novoAgente = new Agente(nome, descricao, raridade, imagem);
+ */
+        
 
         this.agentes.push(novoAgente);
+        console.log("lista agente class", this.agentes);
+    }
+    
+ /*    addAgente(agente){
+        this.listaAgentes.push(agente)
+        console.log("Lista Agente Class",this.listaAgentes)
+    } */
+
+    getListaAgentes(){
+        return this.agentes
     }
 
     excluirAgente(id) {
@@ -24,14 +34,14 @@ export default class ListaAgentes {
         return agente;
     }
 
-    AtualizarAgente(id, nome, descricao, raridade, imagem) {
+    AtualizarAgente(id, name, description, rarity, image) {
         const agente = this.getAgentePorId(id);
     
         if (agente) {
-            agente.nome = nome;
-            agente.descricao = descricao;
-            agente.raridade = raridade;
-            agente.imagem = imagem;
+            agente.name = name;
+            agente.description = description;
+            agente.rarity = rarity;
+            agente.image = imagem;
         }
         return this.agentes;
     }

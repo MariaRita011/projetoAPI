@@ -3,11 +3,47 @@
 import React, { useEffect, useState } from 'react'
 import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
+import Agente from '@/models/agente';
 
 const listaAgentes = new ListaAgentes();
 
 function page() {
-
+/*     'use client';
+    import React, { useEffect, useState } from "react";
+    import fetchApiData from "../components/apiCaller/fetchApiData";
+    import Header from "../components/header/Header";
+    import styles from "./aulaAPI.module.css";
+    import ListaAgentes from "../../models/ListaAgentes";
+    import Agente from "../../models/Agente";
+    
+    const instanciaLista = new ListaAgentes(); // Crie uma única instância fora do componente
+    
+    export default function Home() {
+      const [listaAgentes, setListaAgentes] = useState([]); // Inicialize com um array vazio
+    
+      const [apiData, setApiData] = useState(null);
+      const [displayName, setDisplayName] = useState("");
+      const [bustPortrait, setBustPortrait] = useState("");
+      const [description, setDescription] = useState("");
+    
+      const handleAddAgente = () => {
+        const novoAgente = new Agente(displayName, bustPortrait, description);
+      
+        // Verifique se o agente já está na lista local
+        if (!listaAgentes.some(agente => agente.displayName === displayName)) {
+          // Se não estiver, adicione-o à lista local
+          const updatedAgentes = [...listaAgentes, novoAgente];
+          setListaAgentes(updatedAgentes);
+        }
+      
+        // Adicione o agente à instância compartilhada
+        instanciaLista.addAgente(novoAgente);
+      
+        // Limpar os campos do formulário
+        setDisplayName("");
+        setBustPortrait("");
+        setDescription("");
+      }; */
     const [nome, setNome] = useState('')
     const [lista, setLista] = useState(listaAgentes.agentes)
     const [descricao, setDescricao] = useState('')
@@ -18,22 +54,34 @@ function page() {
     const [flag, setFlag] = useState(0)
     const [editButton, setEditButton] = useState(false)
 
-    const [apiData, setApiData] = useState('');
+    const [apiData, setApiData] = useState(null);
+    const [agentesLista, setAgentesLista] = useState([]);
 
-    useEffect(() => {
-        const CardsFecth = async () => {
-            try {
-                const dados = await Cards();
-                setApiData(dados)
-            } catch (error) {
-                throw error;
-            }
-        }
-        CardsFecth();
-    }, [])
+    /*   useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const data = await fetchApiData();
+            setApiData(data);
+          } catch (error) {
+            // Lidar com erros de chamada à API
+          }
+        };
+        fetchData();
+      }, []);*/
+    
+   
 
     function adicionar() {
-        listaAgentes.adicionarAgente(nome, descricao, raridade, imagem);
+        const novoAgente = new Agente(name, description, rarity)
+        if (!agentesLista.some(agente => agente.name === name)) {
+            // Se não estiver, adicione-o à lista local
+            const updatedAgentes = [...agentesLista, novoAgente];
+            setAgentesLista(updatedAgentes);
+          }
+        
+          // Adicione o agente à instância compartilhada
+          listaAgentes.adicionarAgente(novoAgente);
+       
         limparCampos();
     }
 
@@ -76,6 +124,34 @@ function page() {
         limparCampos()
 
     }
+    
+    useEffect(() => {
+        const CardsFecth = async () => {
+            try {
+                const dados = await Cards();
+                setApiData(dados)
+            } catch (error) {
+                throw error;
+            }
+        }
+        CardsFecth();
+    }, [])
+    useEffect(() => {
+        if (apiData && apiData.dados) {
+          apiData.dados.forEach((agenteData) => {
+            const novoAgente = new Agente(
+              agenteData.name,
+              agenteData.description,
+              agenteData.rarity
+            );
+            listaAgentes.adicionarAgente(novoAgente);
+          });
+    
+          // Atualize o estado com a lista de agentes atualizada
+          const updatedAgentes = [...listaAgentes, ...listaAgentes.getListaAgentes()]; // Combine os dados da API com os existentes
+          setAgentesLista(updatedAgentes);
+        }
+      }, [apiData]); 
 
     console.log(listaAgentes.agentes)
 
@@ -127,7 +203,7 @@ function page() {
                 }
 
             </div>
-            {/* <h2>Teste</h2>
+           <h2>Teste</h2>
             <div>
                 {
                     apiData ? (
@@ -144,7 +220,7 @@ function page() {
                             <p>Carregando..</p>
                         )
                 }
-            </div > */}
+            </div >
 
         </div>
     )
