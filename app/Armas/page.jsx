@@ -16,7 +16,8 @@ function page() {
 
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
-    const [image, setImage] = useState()
+    const [image, setImage] = useState('')
+    const [search, setSearch] = useState('')
     const [div1, setDiv1] = useState(true)
     const [div2, setDiv2] = useState(false)
     const [flag, setFlag] = useState(0)
@@ -26,8 +27,14 @@ function page() {
     const [url, setUrl] = useState(false)
     const [sucesso, setSucesso] = useState(false)
 
+    console.log(search);
+
     const [apiData, setApiData] = useState(null);
     const [agentesLista, setAgentesLista] = useState([]);
+
+    const agentesFiltrados = agentesLista.filter((agente) =>
+    agente.name.toLowerCase().includes(search.toLowerCase())
+    )
 
     function adicionar() {
         const novoAgente = new Agente(name, description, image)
@@ -61,7 +68,7 @@ function page() {
 
             limparCampos();
         }
-    }
+
 
     function limparCampos() {
         setName('');
@@ -201,9 +208,27 @@ function page() {
                 }
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+                <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder={'Buscar'}
+                />
+
                 <div className={styles.cardsContainer}>
+
                     {
-                        agentesLista ? (
+                        agentesFiltrados.length > 0 ? (
+                            agentesFiltrados.map((agente) => (
+                                <div className={styles.cards} key={agente.id}>
+                                    <CardsAgents nm={agente.name} desc={agente.description} img={agente.image} />
+                                    <div className={styles.buttons}>
+                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
+                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(agente.id)} text={'Editar'} />
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
                             agentesLista.map((card) => (
                                 <div className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
@@ -214,10 +239,7 @@ function page() {
                                 </div>
 
                             ))
-                        ) :
-                            (
-                                <p>Carregando..</p>
-                            )
+                        )
                     }
                 </div>
 
