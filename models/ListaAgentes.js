@@ -1,4 +1,4 @@
-import Agente from "./agente";
+
 
 export default class ListaAgentes {
     constructor() {
@@ -6,34 +6,36 @@ export default class ListaAgentes {
         this.todos = [];
     }
 
-   
-    adicionarAgente(name, description, rarity, image) {
-        const novoAgente = new Agente(name, description, rarity, image);
-
-        console.log(novoAgente);
-
+    adicionarAgente(novoAgente) {
+        console.log('array', this.agentes);
         this.agentes.push(novoAgente);
-        console.log(this.dadosApi);
+        console.log("lista agente class", this.agentes);
     }
 
-    excluirAgente(id) {
-        const ListaAgentes = this.agentes.filter(Agente => Agente.id != id);
-        this.agentes = ListaAgentes;
-        return ListaAgentes;
+
+
+    getListaAgentes() {
+        return this.agentes
     }
+
+    excluirAgente(param) {
+        this.agentes = this.agentes.filter(agente => agente.id != param.id);
+
+        console.log('remover', this.agentes);
+    }
+
 
     getAgentePorId(id) {
         const agente = this.agentes.find(agente => agente.id == id);
         return agente;
     }
 
-    AtualizarAgente(id, name, description, rarity, image) {
+    AtualizarAgente(id, name, description, image) {
         const agente = this.getAgentePorId(id);
 
         if (agente) {
             agente.name = name;
             agente.description = description;
-            agente.rarity = rarity;
             agente.image = image;
         }
         return this.agentes;
