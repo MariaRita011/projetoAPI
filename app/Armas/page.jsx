@@ -27,6 +27,7 @@ function page() {
     const [editButton, setEditButton] = useState(false)
     const [erro, setErro] = useState(false)
     const [erroDiv2, setErroDiv2] = useState(false)
+    const [erro2Div2, setErro2Div2] = useState(false)
     const [url, setUrl] = useState(false)
     const [sucesso, setSucesso] = useState(false)
     const [apiData, setApiData] = useState(null);
@@ -42,10 +43,16 @@ function page() {
         );
 
         if (!search) {
-            setErroDiv2(true);
-            setAgentesFiltrados(listaAux);
+            setErroDiv2(true)
+            setTimeout(() => {
+                setErroDiv2(false)
+            }, 2000)
+            setAgentesFiltrados(listaAgentes);
         } else if (agentesFiltrados.length == 0) {
-            setErroDiv2(true);
+            setErro2Div2(true)
+            setTimeout(() => {
+                setErro2Div2(false)
+            }, 2000)
             setAgentesFiltrados(listaAgentes);
 
         } else {
@@ -194,8 +201,9 @@ function page() {
     return (
 
         <div className={styles.main} >
-
-            <button onClick={mudar}>mudar</button>
+<div className={styles.searchDiv}>
+            <button className={styles.mudarPage} onClick={mudar}>mudar</button>
+</div>
 
             {/* Tela 1 */}
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
@@ -244,20 +252,25 @@ function page() {
 
             {/* Tela 2 */}
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
-                {//mensagem de erro
+                <div className={styles.divInput}>
+                    <input className={styles.searchInput}
+                        type="text"
+                        value={search}
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                        placeholder={'Digite Aqui'}
+                    />
+                    <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
+                </div>
 
-                    erroDiv2 ? <NavMsg tipo={"erro"} msg={'faksdfjaçslkdjfaçsdjk'} /> : null
-
+                {
+                    erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
                 }
-                <input
-                    type="text"
-                    value={search}
-                    onChange={(e) => {
-                        setSearch(e.target.value);
-                    }}
-                    placeholder={'Buscar'}
-                />
-                <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
+
+{
+                    erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
+                }
 
                 <div className={styles.cardsContainer}>
 

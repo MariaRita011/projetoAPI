@@ -41,3 +41,32 @@
     height: 100%;
     width: 100%;
   }
+
+  .divInput{
+    text-align: center;
+  }
+
+  .searchInput {
+    padding: 0.5rem 1.5rem;
+    background-color: #00000000;
+    border: 1px #f0f0f02d solid;
+    margin: 1rem;
+    border-radius: 8px;
+    color: #ffffffcc;
+  }
+  .searchInput:focus {
+    outline: none;
+  }
+
+  .mudarPage {
+    background-color: #ff7803b9;
+    border-radius: 8px;
+font-size: 16px;
+padding: 0.1rem 0.5rem;
+border: none;
+  }
+
+  .searchDiv {
+    text-align: center;
+    padding: 1rem;
+  }
