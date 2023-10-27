@@ -40,4 +40,6 @@ export default class ListaAgentes {
         return this.agentes;
     }
 
+    
+
 }

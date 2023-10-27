@@ -24,17 +24,32 @@ function page() {
     const [editButton, setEditButton] = useState(false)
     //msg de erro
     const [erro, setErro] = useState(false)
+    const [erroDiv2, setErroDiv2] = useState(false)
     const [url, setUrl] = useState(false)
     const [sucesso, setSucesso] = useState(false)
-
-    console.log(search);
 
     const [apiData, setApiData] = useState(null);
     const [agentesLista, setAgentesLista] = useState([]);
 
-    const agentesFiltrados = agentesLista.filter((agente) =>
-    agente.name.toLowerCase().includes(search.toLowerCase())
-    )
+    const [showError, setShowError] = useState(false);
+
+    const [agentesFiltrados, setAgentesFiltrados] = useState([]);
+
+    function pesquisar() {
+
+        const agentesFiltrados = agentesLista.filter((agente) =>
+            agente.name.toLowerCase().includes(search.toLowerCase())
+        );
+
+        if (!search) {
+            setErroDiv2(true);
+        } else if (agentesFiltrados.length == 0) {
+            setErroDiv2(true)
+        } else {
+            setAgentesFiltrados(agentesFiltrados);
+        }
+
+    }
 
     function adicionar() {
         const novoAgente = new Agente(name, description, image)
@@ -45,7 +60,7 @@ function page() {
                 setErro(false)
             }, 3000)
 
-        } else if( urlValida(image)== false){
+        } else if (urlValida(image) == false) {
             setUrl(true)
             setTimeout(() => {
                 setUrl(false)
@@ -56,7 +71,7 @@ function page() {
                 console.log(" passou pelo popUp");
                 console.log('passou pela url');
                 // Se não estiver, adicione-o à lista local
-                const updatedAgentes = [novoAgente, ...agentesLista];
+                const updatedAgentes = [...agentesLista, novoAgente];
                 setAgentesLista(updatedAgentes);
             }
             setSucesso(true)
@@ -68,6 +83,7 @@ function page() {
 
             limparCampos();
         }
+    }
 
 
     function limparCampos() {
@@ -80,12 +96,12 @@ function page() {
         setDiv1(!div1);
         setDiv2(!div2);
     }
-   const urlValida =(image)=> {
+    const urlValida = (image) => {
         if (image.match(/\.(jpeg|jpg|gif|png)$/) != null) {
-            
+
             return true;
         } else {
-            
+
 
             return false;
         }
@@ -113,8 +129,6 @@ function page() {
     function update() {
         listaAgentes.AtualizarAgente(flag, name, description, image);
 
-        console.log('update', listaAgentes);
-
         setFlag(0);
         setAgentesLista(listaAgentes.agentes)
         setEditButton(false)
@@ -124,16 +138,25 @@ function page() {
     }
 
     useEffect(() => {
+
+        let ignore = false;
+
         const CardsFecth = async () => {
             try {
                 const dados = await Cards();
-                console.log('dados useefect', dados);
-                setApiData(dados)
+                if (!ignore) {
+                    setApiData(dados)
+                }
             } catch (error) {
                 throw error;
             }
         }
         CardsFecth();
+
+        return () => {
+            ignore = true;
+        };
+
     }, [])
 
 
@@ -157,10 +180,8 @@ function page() {
         }
     }, [apiData]);
 
-    console.log(agentesLista)
-
     return (
-        <div>
+        <div className={styles.main} >
             <button onClick={mudar}>mudar</button>
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
                 <input
@@ -182,13 +203,11 @@ function page() {
                     placeholder={'image do agente'}
                     onChange={(e) => setImage(e.target.value)} />
 
-
-
                 {
                     editButton ? (
                         <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
                     ) : (
-                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Excluir'} />
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
                     )
                 }
                 {//mensagem de erro
@@ -208,34 +227,42 @@ function page() {
                 }
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+                {//mensagem de erro
+
+                    erroDiv2 ? <NavMsg tipo={"erro"} msg={'faksdfjaçslkdjfaçsdjk'} /> : null
+
+                }
                 <input
                     type="text"
                     value={search}
-                    onChange={(e) => setSearch(e.target.value)}
+                    onChange={(e) => {
+                        setSearch(e.target.value);
+                    }}
                     placeholder={'Buscar'}
                 />
+                <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
 
                 <div className={styles.cardsContainer}>
 
                     {
                         agentesFiltrados.length > 0 ? (
                             agentesFiltrados.map((agente) => (
-                                <div className={styles.cards} key={agente.id}>
-                                    <CardsAgents nm={agente.name} desc={agente.description} img={agente.image} />
-                                    <div className={styles.buttons}>
+                                <div id={agente.id} className={styles.cards} key={agente.id}>
+                                    <CardsAgents nm={agente.name} img={agente.image} />
+                                    {/* <div className={styles.buttons}>
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
                                         <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(agente.id)} text={'Editar'} />
-                                    </div>
+                                    </div> */}
                                 </div>
                             ))
                         ) : (
                             agentesLista.map((card) => (
-                                <div className={styles.cards} key={card.id}>
+                                <div id={card.id} className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
-                                    <div className={styles.buttons}>
+                                    {/* <div className={styles.buttons}>
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
                                         <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
-                                    </div>
+                                    </div> */}
                                 </div>
 
                             ))
@@ -243,7 +270,15 @@ function page() {
                     }
                 </div>
 
+
+
             </div>
+            {
+                showError ? (
+                    <p> PopUp</p>
+                ) : (null)
+            }
+
 
 
         </div>

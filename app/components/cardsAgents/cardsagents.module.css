@@ -5,18 +5,13 @@
 }
 
 .photos {
-    background-color: #0001235d;
-    border-radius: 100%;
     margin: 1rem;   
-    border: #cccccc3b 0.01rem solid;
-    box-shadow: 1px 1px 20px 1px rgba(255, 255, 255, 0.19);
--webkit-box-shadow: 1px 1px 20px 1px rgba(255,255,255,0.19);
--moz-box-shadow: 1px 1px 20px 1px rgba(255,255,255,0.19);
 }
 
 .desc {
     color: #F1F1F1;
     font-size: 14px;
+    margin-top: 2rem;
     margin: 1rem;
     text-align: justify;
     margin-bottom: 10%;
