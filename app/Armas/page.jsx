@@ -1,9 +1,13 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import styles from './armas.module.css'
 import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
 import Agente from '@/models/agente';
+import CardsAgents from '../components/cardsAgents/CardsAgents';
+import Buttons from '../components/buttons/Buttons';
+import ButtonsAct from '../components/buttonsact/ButtonsAct';
 
 const listaAgentes = new ListaAgentes();
 
@@ -24,7 +28,7 @@ function page() {
         const novoAgente = new Agente(name, description)
         if (!agentesLista.some(agente => agente.name === name)) {
             // Se não estiver, adicione-o à lista local
-            const updatedAgentes = [...agentesLista, novoAgente];
+            const updatedAgentes = [ novoAgente, ...agentesLista];
             setAgentesLista(updatedAgentes);
         }
 
@@ -59,7 +63,8 @@ function page() {
 
         setEditButton(true)
         setFlag(id)
-       /*  setLista(listaAgentes.agentes) */
+        mudar()
+        /*  setLista(listaAgentes.agentes) */
 
     }
 
@@ -67,7 +72,7 @@ function page() {
         listaAgentes.AtualizarAgente(flag, name, description, image);
 
         console.log('update', listaAgentes);
-        
+
         setFlag(0);
         setAgentesLista(listaAgentes.agentes)
         setEditButton(false)
@@ -135,34 +140,36 @@ function page() {
                     placeholder={'image do agente'}
                     onChange={(e) => setImage(e.target.value)} />
 
-               
 
-{
-    editButton ? (
-        <button onClick={update}>Atualizar</button>
-    ) : (
-        <button onClick={adicionar}>adicionar</button>
-    )
-}
+
+                {
+                    editButton ? (
+                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'}/>
+                    ) : (
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Excluir'}/>
+                    )
+                }
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
-                {
-                    agentesLista ? (
-                        agentesLista.map((card) => (
-                            <div key={card.id}>
-                                <h1>{card.name}</h1>
-                                <p>{card.description}</p>
-                                <img src={card.image} alt={card.name} width={264} height={264} />
-                                <button onClick={() => excluir(card)}>Excluir</button>
-                                <button onClick={() => edit(card.id)}>Editar</button>
-                            </div>
+                <div className={styles.cardsContainer}>
+                    {
+                        agentesLista ? (
+                            agentesLista.map((card) => (
+                                <div className={styles.cards} key={card.id}>
+                                    <CardsAgents nm={card.name} desc={card.description} img={card.image} />
+                                    <div className={styles.buttons}>
+                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
+                                        <Buttons  bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
+                                    </div>
+                                </div>
 
-                        ))
-                    ) :
-                        (
-                            <p>Carregando..</p>
-                        )
-                }
+                            ))
+                        ) :
+                            (
+                                <p>Carregando..</p>
+                            )
+                    }
+                </div>
 
             </div>
 
