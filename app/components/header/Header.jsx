@@ -1,29 +1,53 @@
 import Image from 'next/image';
 import styles from './header.module.css';
 import NavLink from '../navlink/NavLink.jsx'
+import { AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai';
 
-export const Header = () => {
+
+const HeaderDefault = () => {
+
     return (
-        <div className={styles.header}>
-            <div className={styles.imageLogo}>
-                <Image className={styles.logo} src={'/logo2.png'} width={70} height={70} />
+        <div>
+            <div className={styles.menu2}>
+
+                <div className={styles.icon_header}>
+                    <AiOutlineMenu />
+                </div>
+
+                <div className={styles.imageLogo}>
+                    <Image className={styles.logo} src={'/logo2.png'} width={50} height={50} />
+                </div>
+
             </div>
 
-            <div className={styles.links}>
-                <div className={styles.linka}>
-                    <NavLink  rota={'/'} texto = {'Home'} />
+            <div className={styles.header}>
+            <div className={styles.imageLogo1}>
+                    <Image className={styles.logo1} src={'/logo2.png'} width={50} height={50} />
+                </div>
+                {/* <div className={styles.icon_header}>
+                    <AiOutlineMenu />
+                </div> */}
+                <div className={styles.icon_header2}>
+                    <AiOutlineClose />
+                </div>
+                <div className={styles.links} id={styles.links}>
+
+
+                    <div className={styles.linka}>
+                        <NavLink rota={'/'} texto={'Home'} />
+                    </div>
+
+                    <div className={styles.linka}>
+
+                        <NavLink rota={'/Armas'} texto={'Cadastro'} />
+                    </div>
                 </div>
 
-                <div className={styles.linka}>
-                    
-                    <NavLink  rota={'/Armas'} texto = {'Cadastro'} />
-                </div>
-
-                <div className={styles.linka}>
-                    
-                    <NavLink  rota={'/finances'} texto = {'Financeiro'} />
-                </div>
             </div>
         </div>
-        );
+
+    );
 }
+
+export default HeaderDefault
