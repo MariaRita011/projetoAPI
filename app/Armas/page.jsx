@@ -16,19 +16,26 @@ function page() {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
+    const [search, setSearch] = useState('')
     const [div1, setDiv1] = useState(true)
     const [div2, setDiv2] = useState(false)
     const [flag, setFlag] = useState(0)
     const [editButton, setEditButton] = useState(false)
 
+    console.log(search);
+
     const [apiData, setApiData] = useState(null);
     const [agentesLista, setAgentesLista] = useState([]);
+
+    const agentesFiltrados = agentesLista.filter((agente) =>
+    agente.name.toLowerCase().includes(search.toLowerCase())
+    )
 
     function adicionar() {
         const novoAgente = new Agente(name, description)
         if (!agentesLista.some(agente => agente.name === name)) {
             // Se não estiver, adicione-o à lista local
-            const updatedAgentes = [ novoAgente, ...agentesLista];
+            const updatedAgentes = [novoAgente, ...agentesLista];
             setAgentesLista(updatedAgentes);
         }
 
@@ -144,30 +151,45 @@ function page() {
 
                 {
                     editButton ? (
-                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'}/>
+                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
                     ) : (
-                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Excluir'}/>
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Excluir'} />
                     )
                 }
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+                <input
+                    type="text"
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
+                    placeholder={'Buscar'}
+                />
+
                 <div className={styles.cardsContainer}>
+
                     {
-                        agentesLista ? (
+                        agentesFiltrados.length > 0 ? (
+                            agentesFiltrados.map((agente) => (
+                                <div className={styles.cards} key={agente.id}>
+                                    <CardsAgents nm={agente.name} desc={agente.description} img={agente.image} />
+                                    <div className={styles.buttons}>
+                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
+                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(agente.id)} text={'Editar'} />
+                                    </div>
+                                </div>
+                            ))
+                        ) : (
                             agentesLista.map((card) => (
                                 <div className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
                                     <div className={styles.buttons}>
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
-                                        <Buttons  bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
+                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
                                     </div>
                                 </div>
 
                             ))
-                        ) :
-                            (
-                                <p>Carregando..</p>
-                            )
+                        )
                     }
                 </div>
 
