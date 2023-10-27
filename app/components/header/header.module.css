@@ -51,7 +51,7 @@
 @media screen and (max-width: 768px) {
 
    .logo{
-    margin-bottom: 5% ;
+    margin-bottom: 3% ;
     margin-left: 80%;
    }
    .logo1{
@@ -85,7 +85,12 @@
         flex-direction: column;
         height: 70%;
         width: 25%;
+        display:none ;
         
+    }
+
+    .header:hover{
+        display: block;
     }
 
 
