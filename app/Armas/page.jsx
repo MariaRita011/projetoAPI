@@ -8,6 +8,7 @@ import Agente from '@/models/agente';
 import CardsAgents from '../components/cardsAgents/CardsAgents';
 import Buttons from '../components/buttons/Buttons';
 import ButtonsAct from '../components/buttonsact/ButtonsAct';
+import NavMsg from '../components/navmsg/NavMsg';
 
 const listaAgentes = new ListaAgentes();
 
@@ -21,6 +22,10 @@ function page() {
     const [div2, setDiv2] = useState(false)
     const [flag, setFlag] = useState(0)
     const [editButton, setEditButton] = useState(false)
+    //msg de erro
+    const [erro, setErro] = useState(false)
+    const [url, setUrl] = useState(false)
+    const [sucesso, setSucesso] = useState(false)
 
     console.log(search);
 
@@ -32,17 +37,38 @@ function page() {
     )
 
     function adicionar() {
-        const novoAgente = new Agente(name, description)
-        if (!agentesLista.some(agente => agente.name === name)) {
-            // Se não estiver, adicione-o à lista local
-            const updatedAgentes = [novoAgente, ...agentesLista];
-            setAgentesLista(updatedAgentes);
+        const novoAgente = new Agente(name, description, image)
+        if (name.trim() == '' || description.trim() == '' || image.trim() == '') {
+            console.log("não passou pelo popUp");
+            setErro(true)
+            setTimeout(() => {
+                setErro(false)
+            }, 3000)
+
+        } else if( urlValida(image)== false){
+            setUrl(true)
+            setTimeout(() => {
+                setUrl(false)
+            }, 3000)
+        } else {
+
+            if (!agentesLista.some(agente => agente.name === name)) {
+                console.log(" passou pelo popUp");
+                console.log('passou pela url');
+                // Se não estiver, adicione-o à lista local
+                const updatedAgentes = [novoAgente, ...agentesLista];
+                setAgentesLista(updatedAgentes);
+            }
+            setSucesso(true)
+            setTimeout(() => {
+                setSucesso(false)
+            }, 3000)
+
+            listaAgentes.adicionarAgente(novoAgente);
+
+            limparCampos();
         }
 
-        listaAgentes.adicionarAgente(novoAgente);
-
-        limparCampos();
-    }
 
     function limparCampos() {
         setName('');
@@ -54,7 +80,16 @@ function page() {
         setDiv1(!div1);
         setDiv2(!div2);
     }
+   const urlValida =(image)=> {
+        if (image.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+            
+            return true;
+        } else {
+            
 
+            return false;
+        }
+    }
 
     const excluir = (param) => {
         listaAgentes.excluirAgente(param); // Remova o agente da instância compartilhada
@@ -155,6 +190,21 @@ function page() {
                     ) : (
                         <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Excluir'} />
                     )
+                }
+                {//mensagem de erro
+
+                    erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+
+                }
+                {//mensagem de erro
+
+                    url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
+
+                }
+                {//mensagem de erro
+
+                    sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
+
                 }
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
