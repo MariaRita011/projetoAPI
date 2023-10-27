@@ -1,0 +1,81 @@
+
+
+.parallax {
+    background-image: url(../../public/imagem\ de\ fundo\ CSGO.jpeg);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.mainContent {
+    position: relative;
+    z-index: 1;
+    height: 100%; 
+  }
+
+.preto {
+   
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, rgba(22,13,135,1), rgba(36,23,196,1), rgba(255,156,16,1), rgba(255,204,16,1) ) border-box;
+    border-radius:50em ;
+    border: 6px solid transparent;
+    width: 90%;
+    height: 70%;
+    text-align: center;
+    margin: 5%;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 30%;
+}
+
+.titulo {
+    text-align: center;
+    color: whitesmoke;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 5%;
+}
+
+.button {
+    width: 7%;
+    text-align: center;
+}
+
+.manu {
+    display: flex;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.sub {
+    height: 40px;
+    padding-top: 6%;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(255, 174, 0);;
+}
+.texto{
+    width: 90%;
+    margin-top: 7%;
+    margin-left: 5%;
+}
+
+.vasco{
+    font-size: 15px;
+    padding-bottom: 2%;
+    font-family: 'Archivo', sans-serif;
+}
+.vasco1 {
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+    padding: 0.5%;
+}
+.vasco2 {
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+    padding: 0.5%;
+}
+.vasco3 {
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+    padding: 0.5%;
+}
