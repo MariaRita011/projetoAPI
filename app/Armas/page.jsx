@@ -1,29 +1,126 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
+import styles from './armas.module.css'
 import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
+import Agente from '@/models/agente';
+import CardsAgents from '../components/cardsAgents/CardsAgents';
+import Buttons from '../components/buttons/Buttons';
+import ButtonsAct from '../components/buttonsact/ButtonsAct';
+import NavMsg from '../components/navmsg/NavMsg';
 
 const listaAgentes = new ListaAgentes();
 
 function page() {
 
-    const [nome, setNome] = useState('')
-    const [lista, setLista] = useState(listaAgentes.agentes)
-    const [descricao, setDescricao] = useState('')
-    const [raridade, setRaridade] = useState('')
-    const [imagem, setImagem] = useState('')
+    const [name, setName] = useState('')
+    const [description, setDescription] = useState('')
+    const [image, setImage] = useState()
     const [div1, setDiv1] = useState(true)
     const [div2, setDiv2] = useState(false)
     const [flag, setFlag] = useState(0)
     const [editButton, setEditButton] = useState(false)
+    //msg de erro
+    const [erro, setErro] = useState(false)
+    const [url, setUrl] = useState(false)
+    const [sucesso, setSucesso] = useState(false)
 
-    const [apiData, setApiData] = useState('');
+    const [apiData, setApiData] = useState(null);
+    const [agentesLista, setAgentesLista] = useState([]);
+
+    function adicionar() {
+        const novoAgente = new Agente(name, description, image)
+        if (name.trim() == '' || description.trim() == '' || image.trim() == '') {
+            console.log("não passou pelo popUp");
+            setErro(true)
+            setTimeout(() => {
+                setErro(false)
+            }, 3000)
+
+        } else if( urlValida(image)== false){
+            setUrl(true)
+            setTimeout(() => {
+                setUrl(false)
+            }, 3000)
+        } else {
+
+            if (!agentesLista.some(agente => agente.name === name)) {
+                console.log(" passou pelo popUp");
+                console.log('passou pela url');
+                // Se não estiver, adicione-o à lista local
+                const updatedAgentes = [novoAgente, ...agentesLista];
+                setAgentesLista(updatedAgentes);
+            }
+            setSucesso(true)
+            setTimeout(() => {
+                setSucesso(false)
+            }, 3000)
+
+            listaAgentes.adicionarAgente(novoAgente);
+
+            limparCampos();
+        }
+    }
+
+    function limparCampos() {
+        setName('');
+        setDescription('');
+        setImage('');
+    }
+
+    function mudar() {
+        setDiv1(!div1);
+        setDiv2(!div2);
+    }
+   const urlValida =(image)=> {
+        if (image.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+            
+            return true;
+        } else {
+            
+
+            return false;
+        }
+    }
+
+    const excluir = (param) => {
+        listaAgentes.excluirAgente(param); // Remova o agente da instância compartilhada
+        setAgentesLista(listaAgentes.getListaAgentes()); // Puxa a lista para o varivel local que exibe no map
+    };
+
+    function edit(id) {
+        const agente = listaAgentes.getAgentePorId(id);
+
+        setName(agente.name);
+        setDescription(agente.description);
+        setImage(agente.image);
+
+        setEditButton(true)
+        setFlag(id)
+        mudar()
+        /*  setLista(listaAgentes.agentes) */
+
+    }
+
+    function update() {
+        listaAgentes.AtualizarAgente(flag, name, description, image);
+
+        console.log('update', listaAgentes);
+
+        setFlag(0);
+        setAgentesLista(listaAgentes.agentes)
+        setEditButton(false)
+        limparCampos()
+        mudar()
+
+    }
 
     useEffect(() => {
         const CardsFecth = async () => {
             try {
                 const dados = await Cards();
+                console.log('dados useefect', dados);
                 setApiData(dados)
             } catch (error) {
                 throw error;
@@ -32,52 +129,28 @@ function page() {
         CardsFecth();
     }, [])
 
-    function adicionar() {
-        listaAgentes.adicionarAgente(nome, descricao, raridade, imagem);
-        limparCampos();
-    }
 
-    function limparCampos() {
-        setNome('');
-        setDescricao('');
-        setRaridade('');
-        setImagem('');
-    }
+    useEffect(() => {
+        console.log('passo por aq');
+        console.log('apidata', apiData);
+        if (apiData) {
+            console.log('passo por aq 2');
+            apiData.forEach((agenteData) => {
+                const novoAgente = new Agente(
+                    agenteData.name,
+                    agenteData.description,
+                    agenteData.image
+                );
+                listaAgentes.adicionarAgente(novoAgente);
+            });
 
-    function mudar() {
-        setDiv1(!div1);
-        setDiv2(!div2);
-    }
 
-    function excluir(id) {
-        listaAgentes.excluirAgente(id);
+            const updatedAgentes = [...agentesLista, ...listaAgentes.getListaAgentes()]; // Combine os dados da API com os existentes
+            setAgentesLista(updatedAgentes);
+        }
+    }, [apiData]);
 
-        setLista(listaAgentes.agentes)
-    }
-
-    function edit(id) {
-        const agente = listaAgentes.getAgentePorId(id);
-        setNome(agente.nome);
-        setDescricao(agente.descricao);
-        setRaridade(agente.raridade);
-        setImagem(agente.imagem);
-
-        setEditButton(true)
-        setFlag(id)
-        setLista(listaAgentes.agentes)
-
-    }
-
-    function update() {
-        listaAgentes.AtualizarAgente(flag, nome, descricao, raridade, imagem);
-        setFlag(0);
-        setLista(listaAgentes.agentes)
-        setEditButton(false)
-        limparCampos()
-
-    }
-
-    console.log(listaAgentes.agentes)
+    console.log(agentesLista)
 
     return (
         <div>
@@ -85,66 +158,71 @@ function page() {
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
                 <input
                     type={"text"}
-                    value={nome}
-                    name={'nome'}
-                    placeholder={'Nome do agente'}
-                    onChange={(e) => setNome(e.target.value)} />
+                    value={name}
+                    name={'name'}
+                    placeholder={'name do agente'}
+                    onChange={(e) => setName(e.target.value)} />
                 <input
                     type={"text"}
-                    value={descricao}
-                    name={'descricao'}
+                    value={description}
+                    name={'description'}
                     placeholder={'Descrição do agente'}
-                    onChange={(e) => setDescricao(e.target.value)} />
+                    onChange={(e) => setDescription(e.target.value)} />
                 <input
                     type={"text"}
-                    value={raridade}
-                    name={'raridade'}
-                    placeholder={'Raridade do agente'}
-                    onChange={(e) => setRaridade(e.target.value)} />
-                <input
-                    type={"text"}
-                    value={imagem}
-                    name={'imagem'}
-                    placeholder={'Imagem do agente'}
-                    onChange={(e) => setImagem(e.target.value)} />
+                    value={image}
+                    name={'image'}
+                    placeholder={'image do agente'}
+                    onChange={(e) => setImage(e.target.value)} />
+
+
+
                 {
                     editButton ? (
-                        <button onClick={update}>Atualizar</button>
+                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
                     ) : (
-                        <button onClick={adicionar}>Adicionar</button>
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Excluir'} />
                     )
+                }
+                {//mensagem de erro
+
+                    erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+
+                }
+                {//mensagem de erro
+
+                    url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
+
+                }
+                {//mensagem de erro
+
+                    sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
+
                 }
             </div>
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
-                {
-                    listaAgentes.agentes.map((agente) => (
-                        <div key={agente.id}>
-                            <h1>{agente.nome}</h1>
-                            <button onClick={() => excluir(agente.id)}>Excluir</button>
-                            <button onClick={() => edit(agente.id)}>Editar</button>
-                        </div>
-                    ))
-                }
+                <div className={styles.cardsContainer}>
+                    {
+                        agentesLista ? (
+                            agentesLista.map((card) => (
+                                <div className={styles.cards} key={card.id}>
+                                    <CardsAgents nm={card.name} desc={card.description} img={card.image} />
+                                    <div className={styles.buttons}>
+                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
+                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
+                                    </div>
+                                </div>
+
+                            ))
+                        ) :
+                            (
+                                <p>Carregando..</p>
+                            )
+                    }
+                </div>
 
             </div>
-            {/* <h2>Teste</h2>
-            <div>
-                {
-                    apiData ? (
-                        apiData.map((card) => (
-                            <div key={card.id}>
-                                <h1>{card.name}</h1>
-                                <p>{card.description}</p>
-                              <img src={card.image} alt={card.name} width={264} height={264} /> 
-                            </div>
 
-                        ))
-                    ) :
-                        (
-                            <p>Carregando..</p>
-                        )
-                }
-            </div > */}
 
         </div>
     )

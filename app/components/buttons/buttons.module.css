@@ -1,0 +1,13 @@
+.button {
+    margin: 0.3rem;
+    padding: 0.3rem 1rem ;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: 0.5s;
+  }
+.button:hover {
+  box-shadow: 1px 1px 20px 1px rgba(255, 255, 255, 0.19);
+  -webkit-box-shadow: 1px 1px 20px 1px rgba(255,255,255,0.19);
+  -moz-box-shadow: 1px 1px 20px 1px rgba(255,255,255,0.19);
+  transition: 0.5s;
+  }

@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: rgb(0,0,0);
+background: linear-gradient(117deg, rgba(0,0,0,1) 0%, rgba(48,51,88,1) 50%, rgba(58,71,106,1) 100%);
+}
