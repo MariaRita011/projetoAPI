@@ -16,14 +16,14 @@ const HeaderDefault = () => {
                 </div>
 
                 <div className={styles.imageLogo}>
-                    <Image className={styles.logo} src={'/logo2.png'} width={50} height={50} />
+                    <Image className={styles.logo} src={'/logo2.png'} width={45} height={45} />
                 </div>
 
             </div>
 
             <div className={styles.header}>
             <div className={styles.imageLogo1}>
-                    <Image className={styles.logo1} src={'/logo2.png'} width={50} height={50} />
+                    <Image className={styles.logo1} src={'/logo2.png'} width={45} height={45} />
                 </div>
                 {/* <div className={styles.icon_header}>
                     <AiOutlineMenu />

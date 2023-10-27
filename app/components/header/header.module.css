@@ -29,7 +29,7 @@
  }
 
  .logo1{
-    margin-top: -20%;
+    margin-top: -25%;
     margin-left: 5%;
  }
 
@@ -85,13 +85,11 @@
         flex-direction: column;
         height: 70%;
         width: 25%;
-        display:none ;
+       
         
     }
 
-    .header:hover{
-        display: block;
-    }
+    
 
 
     .links {
