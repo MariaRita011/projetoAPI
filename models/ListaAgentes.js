@@ -3,6 +3,7 @@
 export default class ListaAgentes {
     constructor() {
         this.agentes = [];
+        this.todos = [];
     }
 
     adicionarAgente(novoAgente) {
@@ -40,6 +41,10 @@ export default class ListaAgentes {
         return this.agentes;
     }
 
-    
-
+    adicionarDadosApi(dadosApi){
+        this.todos = {
+            ...this.agentes,
+            ...dadosApi
+        }
+    }
 }
