@@ -1,5 +1,6 @@
 'use client'
 
+//Importando itens necessários
 import React, { useEffect, useState } from 'react'
 import styles from './armas.module.css'
 import Cards from '@/data/armas';
@@ -10,10 +11,12 @@ import Buttons from '../components/buttons/Buttons';
 import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
 
+//Criando instância da lista
 const listaAgentes = new ListaAgentes();
 
 function page() {
 
+    //Criando os estados necessários
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [image, setImage] = useState('')
@@ -22,19 +25,16 @@ function page() {
     const [div2, setDiv2] = useState(false)
     const [flag, setFlag] = useState(0)
     const [editButton, setEditButton] = useState(false)
-    //msg de erro
     const [erro, setErro] = useState(false)
     const [erroDiv2, setErroDiv2] = useState(false)
     const [url, setUrl] = useState(false)
     const [sucesso, setSucesso] = useState(false)
-
     const [apiData, setApiData] = useState(null);
     const [agentesLista, setAgentesLista] = useState([]);
-
     const [showError, setShowError] = useState(false);
-
     const [agentesFiltrados, setAgentesFiltrados] = useState([]);
 
+    //Function de input de busca
     function pesquisar() {
 
         const agentesFiltrados = agentesLista.filter((agente) =>
@@ -43,14 +43,18 @@ function page() {
 
         if (!search) {
             setErroDiv2(true);
+            setAgentesFiltrados(listaAux);
         } else if (agentesFiltrados.length == 0) {
-            setErroDiv2(true)
+            setErroDiv2(true);
+            setAgentesFiltrados(listaAgentes);
+
         } else {
             setAgentesFiltrados(agentesFiltrados);
         }
 
     }
 
+    //Function para adicionar um novo agente
     function adicionar() {
         const novoAgente = new Agente(name, description, image)
         if (name.trim() == '' || description.trim() == '' || image.trim() == '') {
@@ -85,17 +89,20 @@ function page() {
         }
     }
 
-
+    //Funciton de limpar campos
     function limparCampos() {
         setName('');
         setDescription('');
         setImage('');
     }
 
+    //Function para tela híbrida
     function mudar() {
         setDiv1(!div1);
         setDiv2(!div2);
     }
+
+    //Function de verificação de url
     const urlValida = (image) => {
         if (image.match(/\.(jpeg|jpg|gif|png)$/) != null) {
 
@@ -107,11 +114,13 @@ function page() {
         }
     }
 
+    //Function de excluir um agente
     const excluir = (param) => {
         listaAgentes.excluirAgente(param); // Remova o agente da instância compartilhada
         setAgentesLista(listaAgentes.getListaAgentes()); // Puxa a lista para o varivel local que exibe no map
     };
 
+    //Function de editar um agente
     function edit(id) {
         const agente = listaAgentes.getAgentePorId(id);
 
@@ -123,9 +132,10 @@ function page() {
         setFlag(id)
         mudar()
         /*  setLista(listaAgentes.agentes) */
-
     }
 
+
+    //Function de atualizar
     function update() {
         listaAgentes.AtualizarAgente(flag, name, description, image);
 
@@ -180,9 +190,14 @@ function page() {
         }
     }, [apiData]);
 
+    //Criando HTML
     return (
+
         <div className={styles.main} >
+
             <button onClick={mudar}>mudar</button>
+
+            {/* Tela 1 */}
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
                 <input
                     type={"text"}
@@ -226,6 +241,8 @@ function page() {
 
                 }
             </div>
+
+            {/* Tela 2 */}
             <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
                 {//mensagem de erro
 
@@ -273,13 +290,6 @@ function page() {
 
 
             </div>
-            {
-                showError ? (
-                    <p> PopUp</p>
-                ) : (null)
-            }
-
-
 
         </div>
     )
