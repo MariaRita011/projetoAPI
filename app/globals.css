@@ -9,3 +9,8 @@
 body {
     height: 100vh;
 }
+
+@font-face {
+    font-family: 'csgo';
+    src: local('csgo'), url(../fonts/Orbitron-VariableFont_wght.ttf) format('truetype');
+}
