@@ -201,9 +201,9 @@ function page() {
     return (
 
         <div className={styles.main} >
-<div className={styles.searchDiv}>
-            <button className={styles.mudarPage} onClick={mudar}>mudar</button>
-</div>
+            <div className={styles.searchDiv}>
+                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
+            </div>
 
             {/* Tela 1 */}
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
@@ -268,7 +268,7 @@ function page() {
                     erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
                 }
 
-{
+                {
                     erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
                 }
 
