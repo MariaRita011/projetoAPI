@@ -164,13 +164,26 @@ function page() {
 
     //Function de atualizar
     function update() {
+        if (name.trim() == '' || description.trim() == '' || image.trim() == '') {
+            console.log("não passou pelo popUp");
+            setErro(true)
+            setTimeout(() => {
+                setErro(false)
+            }, 3000)
+
+        } else if (urlValida(image) == false) {
+            setUrl(true)
+            setTimeout(() => {
+                setUrl(false)
+            }, 3000)
+        } else {
         listaAgentes.AtualizarAgente(flag, name, description, image);
 
         setFlag(0);
         setAgentesLista(listaAgentes.agentes)
         setEditButton(false)
         limparCampos()
-        mudar()
+        mudar()}
 
     }
 
@@ -329,9 +342,12 @@ function page() {
                             agentesLista.map((agente) => (
                                 agente.id == abrirModal && (
                                     <div key={agente.id}>
+                                      
                                         <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
-
-                                    </div>)))
+                                
+                                 
+                                    
+                                  </div>)))
                         ) : null
                     }
                     </div>
