@@ -37,14 +37,14 @@ function page() {
     const [showError, setShowError] = useState(false);
     const [agentesFiltrados, setAgentesFiltrados] = useState([]);
 
-//janela modal
+    //janela modal
 
     const [abrirModal, setAbrirModal] = useState(null);
-//abre o modal do id do agente
+    //abre o modal do id do agente
     const openModal = (id) => {
         setAbrirModal(id);
     };
-//fechar modal
+    //fechar modal
     const closeModal = () => {
         setAbrirModal(null);
     };
@@ -238,43 +238,56 @@ function page() {
     return (
 
         <div className={styles.main} >
-            <div className={styles.searchDiv}>
-                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
-                <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+<button className={styles.mudarPage} onClick={mudar}>mudar</button>
+                {/* Tela 1 */}
+                <div className={styles.divForm} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
+                    <h1>Cadastre seu agente!</h1>
+
+                        
+                        <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
 
 
-                <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
-            </div>
+                        <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+                  
+                    <div className={styles.divInp}>
+                        <div className={styles.sla}>
+                            <input className={styles.inputForm}
+                                type={"text"}
+                                value={name}
+                                name={'name'}
+                                placeholder={'Nome do agente'}
+                                onChange={(e) => setName(e.target.value)} />
+                            <input className={styles.inputForm}
+                                type={"text"}
+                                value={description}
+                                name={'description'}
+                                placeholder={'Descrição do agente'}
+                                onChange={(e) => setDescription(e.target.value)} />
+                            <input className={styles.inputForm}
+                                type={"text"}
+                                value={image}
+                                name={'image'}
+                                placeholder={'Imagem do agente'}
+                                onChange={(e) => setImage(e.target.value)} />
 
-            {/* Tela 1 */}
-            <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-                <input
-                    type={"text"}
-                    value={name}
-                    name={'name'}
-                    placeholder={'name do agente'}
-                    onChange={(e) => setName(e.target.value)} />
-                <input
-                    type={"text"}
-                    value={description}
-                    name={'description'}
-                    placeholder={'Descrição do agente'}
-                    onChange={(e) => setDescription(e.target.value)} />
-                <input
-                    type={"text"}
-                    value={image}
-                    name={'image'}
-                    placeholder={'image do agente'}
-                    onChange={(e) => setImage(e.target.value)} />
+                        </div>
 
+                        <div className={styles.imgCode}>
+                            <img className={styles.imgcodeM} width={157} height={157} src='/qrcode_blog.counter-strike.net.png' />
+                        </div>
 
-                {
-                    editButton ? (
-                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
-                    ) : (
-                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
-                    )
-                }
+                    </div>
+                    <p className={styles.p}>Você pode acessar tambem o site oficial, através do QR code disponibilizado</p>
+
+                    {
+                        editButton ? (
+                            <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+                        ) : (
+                            <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+                        )
+                    }
+
+                
                 {//mensagem de erro
 
                     erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
@@ -290,10 +303,19 @@ function page() {
                     sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
 
                 }
-            </div>
+           </div>
 
             {/* Tela 2 */}
-            <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+            <div className={styles.main2} style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+
+                <div className={styles.searchDiv}>
+                    
+                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+
+
+                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+                </div>
+
                 <div className={styles.divInput}>
                     <input className={styles.searchInput}
                         type="text"
@@ -321,14 +343,14 @@ function page() {
                             agentesFiltrados.map((agente) => (
                                 <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
                                     <CardsAgents nm={agente.name} img={agente.image} />
-                                 
+
                                 </div>
                             ))
                         ) : (
                             agentesLista.map((card) => (
                                 <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
-                                
+
                                 </div>
 
                             ))
@@ -354,7 +376,7 @@ function page() {
 
 
 
-            </div>
+         </div>
 
         </div>
     )
