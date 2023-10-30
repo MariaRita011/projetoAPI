@@ -1,0 +1,14 @@
+.mensagem{
+    text-align: center;
+    padding: 1%;
+    color: #fff;
+    width: 30%;
+    border-radius: 8px;
+    margin-left: 35%;
+}
+#sucesso{
+    background-color: green;
+}
+#erro{
+    background-color: red;
+}
