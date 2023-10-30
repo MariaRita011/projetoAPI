@@ -13,9 +13,11 @@ import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
 
 
+
 import Modal from '../components/modal/Modal';
 
 //Criando instância da lista
+
 const listaAgentes = new ListaAgentes();
 
 function page() {
@@ -77,6 +79,13 @@ function page() {
 
     //Function para adicionar um novo agente
     function adicionar() {
+
+        const novoAgente = new Agente(name, description)
+        if (!agentesLista.some(agente => agente.name === name)) {
+            // Se não estiver, adicione-o à lista local
+            const updatedAgentes = [novoAgente, ...agentesLista];
+            setAgentesLista(updatedAgentes);
+
         const novoAgente = new Agente(name, description, image)
         if (name.trim() == '' || description.trim() == '' || image.trim() == '') {
             console.log("não passou pelo popUp");
@@ -107,6 +116,7 @@ function page() {
             listaAgentes.adicionarAgente(novoAgente);
 
             limparCampos();
+
         }
     }
     //Fuction de voltar ao topo da pag
@@ -237,6 +247,9 @@ function page() {
     //Criando HTML
     return (
 
+        <div className={styles.divMain}>
+
+
         <div>
             <HeaderDefault />
 
@@ -266,6 +279,45 @@ function page() {
                     placeholder={'image do agente'}
                     onChange={(e) => setImage(e.target.value)} />
 
+
+            <button className={styles.btnChange} onClick={mudar}>mudar</button>
+            <div className={styles.Divh1}>
+                <h1 className={styles.h1}>Iniciar cadastro</h1>
+            </div>
+            <div className={styles.divForm} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
+
+                <div className={styles.divInp}>
+                    <div className={styles.sla}> 
+                    <input className={styles.inputForm}
+                        type={"text"}
+                        value={name}
+                        name={'name'}
+                        placeholder={'Nome do agente'}
+                        onChange={(e) => setName(e.target.value)} />
+                    <input className={styles.inputForm}
+                        type={"text"}
+                        value={description}
+                        name={'description'}
+                        placeholder={'Descrição do agente'}
+                        onChange={(e) => setDescription(e.target.value)} />
+                    <input className={styles.inputForm}
+                        type={"text"}
+                        value={image}
+                        name={'image'}
+                        placeholder={'Imagem do agente'}
+                        onChange={(e) => setImage(e.target.value)} />
+
+                    </div>
+
+                    <div className={styles.imgCode}>
+                        <img className={styles.imgcodeM} width={157} height={157} src='/qrcode_blog.counter-strike.net.png' />
+                    </div>
+
+
+                </div>
+                <p className={styles.p}>Você pode acessar tambem o site oficial, através do QR code disponibilizado</p>
+
+                {
 
                 {
                     editButton ? (
@@ -304,12 +356,19 @@ function page() {
 
 
                     {
+
                         editButton ? (
                             <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
                         ) : (
                             <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
                         )
                     }
+
+
+            </div>
+            <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+                <div className={styles.cardsContainer}>
+
                     {//mensagem de erro
 
                         erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
@@ -344,6 +403,7 @@ function page() {
                     {
                         erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
                     }
+
 
                     {
 
@@ -387,7 +447,10 @@ function page() {
 
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
                                         <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
+
+
                                     </div> */}
+
                                     </div>
 
 
@@ -432,6 +495,7 @@ function page() {
 
             </div>
         </div>
+
     )
 }
 
