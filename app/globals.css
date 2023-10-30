@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&family=Roboto:wght@300&display=swap');
 
 * {
@@ -8,4 +9,13 @@
     font-family: 'Poppins', sans-serif;
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    list-style: none;
 }
+
+
+
+body {
+    height: 100vh;
+}
+
+

@@ -1,0 +1,79 @@
+
+.preto {
+   
+    background: linear-gradient(white, white) padding-box, linear-gradient(to right, rgba(22,13,135,1), rgba(36,23,196,1), rgba(255,156,16,1), rgba(255,204,16,1) ) border-box;
+    border-radius:50em ;
+    border: 6px solid transparent;
+    width: 90%;
+    height: 70%;
+    text-align: center;
+    margin: 5%;
+    border-radius: 20px 20px 20px 20px;
+    margin-top: 30%;
+    
+    
+}
+
+.sub {
+    height: 40px;
+    padding-top: 6%;
+    font-family:csgo;
+    color: rgb(255, 174, 0);;
+}
+.texto{
+    width: 90%;
+    margin-top: 7%;
+    margin-left: 5%;
+}
+
+.vasco{
+    font-size: 15px;
+    padding-bottom: 2%;
+    font-family: 'Archivo', sans-serif;
+}
+.vasco1 {
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+    padding: 0.5%;
+}
+.vasco2 {
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+    padding: 0.5%;
+}
+.vasco3 {
+    font-size: 14px;
+    font-family: 'Archivo', sans-serif;
+    padding: 0.5%;
+}
+
+@media screen and (max-width: 640px){
+
+    .preto{
+        margin-top: 60%;
+        height: 90%;
+    }
+    .sub{
+        padding-top: 10% ;
+        padding-bottom: 10% ;
+    }
+    .texto{
+        margin-top: 20%;      
+    }
+    .vasco{
+        margin-top: 3%;
+        font-size: 17px;
+    }
+    .vasco1{
+        margin-top: 3%;
+        font-size: 17px;
+    }
+    .vasco2{
+        margin-top: 3%;
+        font-size: 17px;
+    }
+    .vasco3{
+        margin-top: 3%;
+        font-size: 17px;
+    }
+}
