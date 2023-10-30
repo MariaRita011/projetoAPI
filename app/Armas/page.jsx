@@ -11,6 +11,8 @@ import Buttons from '../components/buttons/Buttons';
 import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
 
+import Modal from '../components/modal/Modal';
+
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
 
@@ -34,6 +36,16 @@ function page() {
     const [agentesLista, setAgentesLista] = useState([]);
     const [showError, setShowError] = useState(false);
     const [agentesFiltrados, setAgentesFiltrados] = useState([]);
+
+    const [abrirModal, setAbrirModal] = useState(null);
+
+    const openModal = (id) => {
+      setAbrirModal(id);
+    };
+  
+    const closeModal = () => {
+      setAbrirModal(null);
+    };
 
     //Function de input de busca
     function pesquisar() {
@@ -94,6 +106,13 @@ function page() {
 
             limparCampos();
         }
+    }
+    //Fuction de voltar ao topo da pag
+    function btnscroll () {
+        window.scrollTo(0,0);
+    }
+    function btnscrolldawn () {
+        window.scrollTo(0,9800);
     }
 
     //Funciton de limpar campos
@@ -203,6 +222,10 @@ function page() {
         <div className={styles.main} >
             <div className={styles.searchDiv}>
                 <button className={styles.mudarPage} onClick={mudar}>mudar</button>
+                <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+
+
+                <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
             </div>
 
             {/* Tela 1 */}
@@ -225,6 +248,7 @@ function page() {
                     name={'image'}
                     placeholder={'image do agente'}
                     onChange={(e) => setImage(e.target.value)} />
+          
 
                 {
                     editButton ? (
@@ -287,7 +311,7 @@ function page() {
                             ))
                         ) : (
                             agentesLista.map((card) => (
-                                <div id={card.id} className={styles.cards} key={card.id}>
+                                <div  onClick={()=>openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
                                     {/* <div className={styles.buttons}>
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
@@ -297,6 +321,16 @@ function page() {
 
                             ))
                         )
+                    }
+                    {
+                              abrirModal ? (
+                                agentesLista.map((agente) => (
+                                    agente.id == abrirModal &&(
+                                 <div key={agente.id}>
+                                    <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)}/>
+                                   
+                                 </div>)))
+                              ) : null
                     }
                 </div>
 

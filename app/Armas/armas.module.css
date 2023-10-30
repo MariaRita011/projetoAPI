@@ -16,12 +16,63 @@
     transition: 0.5s;   
 
 }
+.buttons{
+  flex-direction: column;
+  margin-top: 1%;
+}
+.btnscroll{
+  
+  background-color: #ff7803b9;
+  padding: 1%;
+  border-radius: 8px;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.336);
+  transform: scale(0.9);
+  transition: 0.3s ease-in-out transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.btnscroll:active{
+  transform: scale(1);
+}
+.btnscroll2:active{
+  transform: scale(1);
+}
+
+
+.btnscroll2{
+  background-color: #ff7803b9;
+  padding: 1%;
+  border-radius: 8px;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 10%;
+  right: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.336);
+  transform: scale(0.9);
+  transition: 0.4s ease-in-out transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+}
 .cards:hover {
     box-shadow: 1px 1px 20px 1px #ffffff2e;
     -webkit-box-shadow: 1px 1px 20px 1px #ffffff2e;
     -moz-box-shadow: 1px 1px 20px 1px #ffffff2e;
     transition: 0.5s;
     transform: scale(1.05);
+    cursor: pointer;
 }
 
 .buttons {
@@ -39,6 +90,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     height: 100%;
+    scroll-behavior: smooth;
     width: 100%;
   }
 
