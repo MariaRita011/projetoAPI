@@ -1,26 +1,31 @@
 .cardsContainer {
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* Três colunas igualmente espaçadas */
-    gap: 10px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Três colunas igualmente espaçadas */
+  gap: 10px;
 }
-.modalContainer{
-  max-height: 70vh;
+
+.modalContainer {
+  max-height: 100vh;
+
+
 }
+
+
 .cards {
-    margin: 1rem;
-    backdrop-filter: blur(2px);
-    background-color: #ffffff02;
-    border: #ffffff4a 0.01rem solid;
-    border-radius: 8px;
-    padding: 1rem;
-    transition: 0.5s;   
+  margin: 1rem;
+  backdrop-filter: blur(2px);
+  background-color: #ffffff02;
+  border: #ffffff4a 0.01rem solid;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: 0.5s;
 
 }
 
-.btnscroll{
-  
+.btnscroll {
+
   background-color: #ff7803b9;
   padding: 1%;
   border-radius: 8px;
@@ -38,15 +43,17 @@
   justify-content: center;
   z-index: 9999;
 }
-.btnscroll:active{
+
+.btnscroll:active {
   transform: scale(1);
 }
-.btnscroll2:active{
+
+.btnscroll2:active {
   transform: scale(1);
 }
 
 
-.btnscroll2{
+.btnscroll2 {
   background-color: #ff7803b9;
   padding: 1%;
   border-radius: 8px;
@@ -65,102 +72,109 @@
   z-index: 9999;
 
 }
+
 .cards:hover {
-    box-shadow: 1px 1px 20px 1px #ffffff2e;
-    -webkit-box-shadow: 1px 1px 20px 1px #ffffff2e;
-    -moz-box-shadow: 1px 1px 20px 1px #ffffff2e;
-    transition: 0.5s;
-    transform: scale(1.05);
-    cursor: pointer;
+  box-shadow: 1px 1px 20px 1px #ffffff2e;
+  -webkit-box-shadow: 1px 1px 20px 1px #ffffff2e;
+  -moz-box-shadow: 1px 1px 20px 1px #ffffff2e;
+  transition: 0.5s;
+  transform: scale(1.05);
+  cursor: pointer;
 }
 
 .buttons {
-    position: absolute;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    text-align: center;
-  }
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
 
+.main {
+  background-image: url(../../public/background.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+
+}
+
+.divInput {
+  text-align: center;
+}
+
+.searchInput {
+  padding: 0.5rem 1.5rem;
+  background-color: #00000000;
+  border: 1px #f0f0f02d solid;
+  margin: 1rem;
+  border-radius: 8px;
+  color: #ffffffcc;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.mudarPage {
+  background-color: #ff7803b9;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 0.1rem 0.5rem;
+  border: none;
+}
+
+.searchDiv {
+  text-align: center;
+  padding: 1rem;
+
+}
+
+@media (max-width: 768px) {
   .main {
-    background-image: url(../../public/background.jpg);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 100%;
-  
     width: 100%;
   }
 
-  .divInput{
-    text-align: center;
+  .btnscroll2 {
+    position: fixed;
+    bottom: 10%;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
   }
 
-  .searchInput {
-    padding: 0.5rem 1.5rem;
-    background-color: #00000000;
-    border: 1px #f0f0f02d solid;
-    margin: 1rem;
-    border-radius: 8px;
-    color: #ffffffcc;
+  .btnscroll {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
   }
-  .searchInput:focus {
-    outline: none;
+
+  .cardsContainer {
+
+    display: flex;
+    flex-direction: column;
   }
 
   .mudarPage {
-    background-color: #ff7803b9;
-    border-radius: 8px;
-font-size: 16px;
-padding: 0.1rem 0.5rem;
-border: none;
+    width: 30%;
+    height: 5vh;
+    font-size: 20px;
   }
 
-  .searchDiv {
+  .cards {
+    width: 90%;
     text-align: center;
-    padding: 1rem;
-
   }
- 
-  @media (max-width: 768px) {
-    .main{
-      width: 100%;
-    }
-    .btnscroll2{
-      position: fixed;
-  bottom: 10%;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-    }
-    .btnscroll{
-      position: fixed;
-  bottom: 10px;
-  right: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-    }
 
-    .cardsContainer{
-
-      display: flex;
-      flex-direction: column;
-    }
-    .mudarPage{
-      width: 30%;
-      height: 5vh;
-      font-size: 20px;
-    }
-    .cards{
-      width: 90%;
-      text-align: center;
-    }
-    .divInput{
-      width: 100%;
-    }
+  .divInput {
+    width: 100%;
   }
+}

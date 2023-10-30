@@ -37,12 +37,16 @@ function page() {
     const [showError, setShowError] = useState(false);
     const [agentesFiltrados, setAgentesFiltrados] = useState([]);
 
-    const [abrirModal, setAbrirModal] = useState(null);
 
+
+//janela modal
+
+    const [abrirModal, setAbrirModal] = useState(null);
+//abre o modal do id do agente
     const openModal = (id) => {
         setAbrirModal(id);
     };
-
+//fechar modal
     const closeModal = () => {
         setAbrirModal(null);
     };
@@ -111,6 +115,7 @@ function page() {
     function btnscroll() {
         window.scrollTo(0, 0);
     }
+    //Function rolar a pag para baixo
     function btnscrolldawn() {
         window.scrollTo(0, 9800);
         window.scrollTo(0, 29935);
@@ -177,13 +182,14 @@ function page() {
                 setUrl(false)
             }, 3000)
         } else {
-        listaAgentes.AtualizarAgente(flag, name, description, image);
+            listaAgentes.AtualizarAgente(flag, name, description, image);
 
-        setFlag(0);
-        setAgentesLista(listaAgentes.agentes)
-        setEditButton(false)
-        limparCampos()
-        mudar()}
+            setFlag(0);
+            setAgentesLista(listaAgentes.agentes)
+            setEditButton(false)
+            limparCampos()
+            mudar()
+        }
 
     }
 
@@ -300,6 +306,7 @@ function page() {
                         placeholder={'Digite Aqui'}
                     />
                     <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
+                 
                 </div>
 
                 {
@@ -317,39 +324,34 @@ function page() {
                             agentesFiltrados.map((agente) => (
                                 <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
                                     <CardsAgents nm={agente.name} img={agente.image} />
-                                    {/* <div className={styles.buttons}>
-                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
-                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(agente.id)} text={'Editar'} />
-                                    </div> */}
+                                 
                                 </div>
                             ))
                         ) : (
                             agentesLista.map((card) => (
                                 <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
-                                    {/* <div className={styles.buttons}>
-                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
-                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
-                                    </div> */}
+                                
                                 </div>
 
                             ))
                         )
                     }
                     <div className={styles.modalContainer}>
-                    {
-                        abrirModal ? (
-                            agentesLista.map((agente) => (
-                                agente.id == abrirModal && (
-                                    <div key={agente.id}>
-                                      
-                                        <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
-                                
-                                 
-                                    
-                                  </div>)))
-                        ) : null
-                    }
+                        {
+                            //modal
+                            abrirModal ? (
+                                agentesLista.map((agente) => (
+                                    agente.id == abrirModal && (
+                                        <div className={styles.modal} key={agente.id}>
+
+                                            <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
+
+
+
+                                        </div>)))
+                            ) : null
+                        }
                     </div>
                 </div>
 

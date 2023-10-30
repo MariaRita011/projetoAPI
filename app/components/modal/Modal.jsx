@@ -5,7 +5,7 @@ const Modal = ({ foto, descricao, nome, oc, on, fechar }) => {
 
 
   return (
-    <div>
+    <div className={styles.fundo}>
      
  
         <div className={styles.modal}>
