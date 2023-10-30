@@ -5,7 +5,9 @@
     /* Três colunas igualmente espaçadas */
     gap: 10px;
 }
-
+.modalContainer{
+  max-height: 70vh;
+}
 .cards {
     margin: 1rem;
     backdrop-filter: blur(2px);
@@ -16,10 +18,7 @@
     transition: 0.5s;   
 
 }
-.buttons{
-  flex-direction: column;
-  margin-top: 1%;
-}
+
 .btnscroll{
   
   background-color: #ff7803b9;
@@ -122,4 +121,46 @@ border: none;
     text-align: center;
     padding: 1rem;
 
+  }
+ 
+  @media (max-width: 768px) {
+    .main{
+      width: 100%;
+    }
+    .btnscroll2{
+      position: fixed;
+  bottom: 10%;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+    }
+    .btnscroll{
+      position: fixed;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+    }
+
+    .cardsContainer{
+
+      display: flex;
+      flex-direction: column;
+    }
+    .mudarPage{
+      width: 30%;
+      height: 5vh;
+      font-size: 20px;
+    }
+    .cards{
+      width: 90%;
+      text-align: center;
+    }
+    .divInput{
+      width: 100%;
+    }
   }

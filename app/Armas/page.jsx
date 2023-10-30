@@ -40,11 +40,11 @@ function page() {
     const [abrirModal, setAbrirModal] = useState(null);
 
     const openModal = (id) => {
-      setAbrirModal(id);
+        setAbrirModal(id);
     };
-  
+
     const closeModal = () => {
-      setAbrirModal(null);
+        setAbrirModal(null);
     };
 
     //Function de input de busca
@@ -108,11 +108,12 @@ function page() {
         }
     }
     //Fuction de voltar ao topo da pag
-    function btnscroll () {
-        window.scrollTo(0,0);
+    function btnscroll() {
+        window.scrollTo(0, 0);
     }
-    function btnscrolldawn () {
-        window.scrollTo(0,9800);
+    function btnscrolldawn() {
+        window.scrollTo(0, 9800);
+        window.scrollTo(0, 29935);
     }
 
     //Funciton de limpar campos
@@ -248,7 +249,7 @@ function page() {
                     name={'image'}
                     placeholder={'image do agente'}
                     onChange={(e) => setImage(e.target.value)} />
-          
+
 
                 {
                     editButton ? (
@@ -301,7 +302,7 @@ function page() {
                     {
                         agentesFiltrados.length > 0 ? (
                             agentesFiltrados.map((agente) => (
-                                <div id={agente.id} className={styles.cards} key={agente.id}>
+                                <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
                                     <CardsAgents nm={agente.name} img={agente.image} />
                                     {/* <div className={styles.buttons}>
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
@@ -311,7 +312,7 @@ function page() {
                             ))
                         ) : (
                             agentesLista.map((card) => (
-                                <div  onClick={()=>openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
+                                <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
                                     {/* <div className={styles.buttons}>
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
@@ -322,16 +323,18 @@ function page() {
                             ))
                         )
                     }
+                    <div className={styles.modalContainer}>
                     {
-                              abrirModal ? (
-                                agentesLista.map((agente) => (
-                                    agente.id == abrirModal &&(
-                                 <div key={agente.id}>
-                                    <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)}/>
-                                   
-                                 </div>)))
-                              ) : null
+                        abrirModal ? (
+                            agentesLista.map((agente) => (
+                                agente.id == abrirModal && (
+                                    <div key={agente.id}>
+                                        <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
+
+                                    </div>)))
+                        ) : null
                     }
+                    </div>
                 </div>
 
 
