@@ -5,11 +5,13 @@ import React, { useEffect, useState } from 'react'
 import styles from './armas.module.css'
 import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
+import { HeaderDefault } from '../components/header/Header';
 import Agente from '@/models/agente';
 import CardsAgents from '../components/cardsAgents/CardsAgents';
 import Buttons from '../components/buttons/Buttons';
 import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
+
 
 import Modal from '../components/modal/Modal';
 
@@ -113,7 +115,9 @@ function page() {
     }
     function btnscrolldawn() {
         window.scrollTo(0, 9800);
+
         window.scrollTo(0, 29935);
+
     }
 
     //Funciton de limpar campos
@@ -233,14 +237,13 @@ function page() {
     //Criando HTML
     return (
 
-        <div className={styles.main} >
-            <div className={styles.searchDiv}>
-                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
-                <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+        <div>
+            <HeaderDefault />
 
-
-                <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
-            </div>
+            <div className={styles.main} >
+                <div className={styles.searchDiv}>
+                    <button className={styles.mudarPage} onClick={mudar}>mudar</button>
+                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
 
             {/* Tela 1 */}
             <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
@@ -273,46 +276,99 @@ function page() {
                 }
                 {//mensagem de erro
 
-                    erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
 
-                }
-                {//mensagem de erro
-
-                    url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
-
-                }
-                {//mensagem de erro
-
-                    sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
-
-                }
-            </div>
-
-            {/* Tela 2 */}
-            <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
-                <div className={styles.divInput}>
-                    <input className={styles.searchInput}
-                        type="text"
-                        value={search}
-                        onChange={(e) => {
-                            setSearch(e.target.value);
-                        }}
-                        placeholder={'Digite Aqui'}
-                    />
-                    <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
+                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
                 </div>
 
-                {
-                    erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
-                }
+                {/* Tela 1 */}
 
-                {
-                    erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
-                }
+                <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
+                    <input
+                        type={"text"}
+                        value={name}
+                        name={'name'}
+                        placeholder={'name do agente'}
+                        onChange={(e) => setName(e.target.value)} />
+                    <input
+                        type={"text"}
+                        value={description}
+                        name={'description'}
+                        placeholder={'Descrição do agente'}
+                        onChange={(e) => setDescription(e.target.value)} />
+                    <input
+                        type={"text"}
+                        value={image}
+                        name={'image'}
+                        placeholder={'image do agente'}
+                        onChange={(e) => setImage(e.target.value)} />
 
-                <div className={styles.cardsContainer}>
 
                     {
+                        editButton ? (
+                            <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+                        ) : (
+                            <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+                        )
+                    }
+                    {//mensagem de erro
+
+                        erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+
+                    }
+                    {//mensagem de erro
+
+                        url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
+
+                    }
+                    {//mensagem de erro
+
+                        sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
+
+                    }
+                </div>
+
+                {/* Tela 2 */}
+                <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+                    <div className={styles.divInput}>
+                        <input className={styles.searchInput}
+                            type="text"
+                            value={search}
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                            }}
+                            placeholder={'Digite Aqui'}
+                        />
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
+                    </div>
+
+                    {
+                        erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
+                    }
+
+                    {
+
+                        erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
+                    }
+
+                    <div className={styles.cardsContainer}>
+
+                        {
+                            agentesFiltrados.length > 0 ? (
+                                agentesFiltrados.map((agente) => (
+                                    <div id={agente.id} className={styles.cards} key={agente.id}>
+                                        <CardsAgents nm={agente.name} img={agente.image} />
+                                        {/* <div className={styles.buttons}>
+                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
+                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(agente.id)} text={'Editar'} />
+                                    </div> */}
+                                    </div>
+                                ))
+                            ) : (
+                                agentesLista.map((card) => (
+                                    <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
+                                        <CardsAgents nm={card.name} desc={card.description} img={card.image} />
+                                        {/* <div className={styles.buttons}>
+
                         agentesFiltrados.length > 0 ? (
                             agentesFiltrados.map((agente) => (
                                 <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
@@ -328,10 +384,22 @@ function page() {
                                 <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
                                     <CardsAgents nm={card.name} desc={card.description} img={card.image} />
                                     {/* <div className={styles.buttons}>
+
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
                                         <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
                                     </div> */}
-                                </div>
+                                    </div>
+
+
+                                ))
+                            )
+                        }
+                        {
+                            abrirModal ? (
+                                agentesLista.map((agente) => (
+                                    agente.id == abrirModal && (
+                                        <div key={agente.id}>
+                                            <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
 
                             ))
                         )
@@ -353,10 +421,16 @@ function page() {
                     </div>
                 </div>
 
+                                        </div>)))
+                            ) : null
+                        }
+                    </div>
 
+
+
+                </div>
 
             </div>
-
         </div>
     )
 }
