@@ -105,3 +105,36 @@
     font-size: 12px;
     color: #afafaf;
 }
+@media (max-width: 780px) {
+    /* Estilos para telas menores */
+    .imgcodeM{
+        width: 50%;
+        height: 50%;
+        flex-direction: column;
+        margin-top: 170%;
+    }
+
+
+    .inputForm{
+width: 278%;
+
+    }
+
+    .p{
+        font-size: 15px;
+    }
+
+
+    .divForm{
+width: 70%;
+height: 68%;
+text-align: center;
+align-items: center;
+left: 18%;
+
+padding: 0;
+
+    }
+
+  
+  }

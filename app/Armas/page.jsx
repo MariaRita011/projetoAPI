@@ -151,7 +151,7 @@ function page() {
                     </div>
 
                     <div className={styles.imgCode}>
-                        <img width={157} height={157} src='/qrcode_blog.counter-strike.net.png' />
+                        <img className={styles.imgcodeM} width={157} height={157} src='/qrcode_blog.counter-strike.net.png' />
                     </div>
 
                 </div>
