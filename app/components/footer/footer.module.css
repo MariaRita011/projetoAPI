@@ -25,15 +25,15 @@
 }
 
 .direitos {
- text-align: center;
- margin-top: 40%;
+    text-align: center;
+    margin-top: 40%;
 }
 
 /*.icons{
     gap: 1rem;
 }*/
 
-.icons{
+.icons {
     display: flex;
     color: #fff;
     gap: 10px;
@@ -41,4 +41,4 @@
     margin-left: 15%;
     width: 100%;
     margin-right: 30px;
-}   
+}

@@ -24,6 +24,7 @@ export const Footer =()=>{
         <div className={styles.container2}>
      <h3 className={styles.titulo}>Nossas Páginas</h3>
         <NavFooter exemplo={"Home"}/>
+        <NavFooter exemplo={"Cards"}/>
         <NavFooter exemplo={"Cadastro"}/>
      </div>
      <div >
