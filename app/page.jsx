@@ -1,14 +1,17 @@
+
+import Image from 'next/image'
 import styles from './page.module.css'
+import HeaderDefault from './components/header/Header'
 
 const Home = () => {
   return (
-    <div>
-      <div className={styles.main}>
-        <h1>teste</h1>
-      </div>
-
-    </div>
+    <main className={styles.main}>
+      <HeaderDefault/>
+     </main>
   )
 }
 
 export default Home;
+
+
+

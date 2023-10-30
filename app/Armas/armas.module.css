@@ -1,0 +1,298 @@
+.cardsContainer {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* Três colunas igualmente espaçadas */
+  gap: 10px;
+}
+
+.modalContainer {
+  max-height: 70vh;
+}
+
+.cards {
+  margin: 1rem;
+  backdrop-filter: blur(2px);
+  background-color: #ffffff02;
+  border: #ffffff4a 0.01rem solid;
+  border-radius: 8px;
+  padding: 1rem;
+  transition: 0.5s;
+
+}
+
+
+.btnscroll {
+  background-color: #ff7803b9;
+  padding: 1%;
+  border-radius: 8px;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.336);
+  transform: scale(0.9);
+  transition: 0.3s ease-in-out transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.btnscroll:active {
+  transform: scale(1);
+}
+
+.btnscroll2:active {
+  transform: scale(1);
+}
+
+.btnscroll2 {
+  background-color: #ff7803b9;
+  padding: 1%;
+  border-radius: 8px;
+  height: 60px;
+  width: 60px;
+  position: fixed;
+  bottom: 10%;
+  right: 10px;
+  cursor: pointer;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.336);
+  transform: scale(0.9);
+  transition: 0.4s ease-in-out transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+
+}
+
+.cards:hover {
+  box-shadow: 1px 1px 20px 1px #ffffff2e;
+  -webkit-box-shadow: 1px 1px 20px 1px #ffffff2e;
+  -moz-box-shadow: 1px 1px 20px 1px #ffffff2e;
+  transition: 0.5s;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.buttons {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  text-align: center;
+
+}
+
+.divMain {
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  align-items: center;
+}
+
+.divForm {
+  background-color: rgb(28, 28, 28);
+  text-align: center;
+  position: relative;
+  margin-top: 10%;
+  align-items: center;
+  width: 50%;
+  left: 25%;
+  border-radius: 5px;
+  justify-content: center;
+
+  /* margin-bottom: 5%; */
+}
+
+.inputForm {
+  width: 80%;
+
+  margin: 20px 0;
+  border-radius: 2px;
+  color: #fff;
+  padding: 10px;
+  background-color: #32353c;
+  outline: none;
+  font-size: 15px;
+  grid-area: input;
+  border: 1px solid #32353c;
+  display: flex;
+
+
+}
+
+.divInp {
+
+  display: flex;
+  padding: 5%;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.sla {
+  /* padding: 5%; */
+  width: 100%;
+  margin-top: 10%;
+ 
+}
+
+.h1 {
+  color: #fff;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+.imgCode {
+  display: flex;
+
+}
+
+.p {
+
+  text-align: center;
+  font-size: 12px;
+  color: #afafaf;
+}
+
+@media (max-width: 780px) {
+
+  /* Estilos para telas menores */
+  .imgcodeM {
+    width: 50%;
+    height: 50%;
+    flex-direction: column;
+    margin-top: 170%;
+  }
+
+
+  .inputForm {
+    width: 278%;
+
+  }
+
+  .p {
+    font-size: 15px;
+  }
+
+
+  .divForm {
+    width: 70%;
+    height: 68%;
+    text-align: center;
+    align-items: center;
+    left: 18%;
+
+    padding: 0;
+
+  }
+
+}
+
+.divInput {
+  text-align: center;
+}
+
+.searchInput {
+  padding: 0.5rem 1.5rem;
+  background-color: #00000000;
+  border: 1px #f0f0f02d solid;
+  margin: 1rem;
+  border-radius: 8px;
+  color: #ffffffcc;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.mudarPage {
+  background-color: #ff7803b9;
+  border-radius: 8px;
+  font-size: 16px;
+  padding: 0.1rem 0.5rem;
+  border: none;
+}
+
+.searchDiv {
+  text-align: center;
+  padding: 1rem;
+
+}
+.main{
+  
+padding-top:1% ;
+
+}
+
+@media (max-width: 768px) {
+  .main {
+    width: 100%;
+  }
+
+  .btnscroll2 {
+    position: fixed;
+    bottom: 10%;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .btnscroll {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+  }
+
+  .cardsContainer {
+
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mudarPage {
+    width: 30%;
+    height: 5vh;
+    font-size: 20px;
+  }
+
+  .cards {
+    width: 90%;
+    text-align: center;
+  }
+
+  .divInput {
+    width: 100%;
+  }
+
+}
+
+.main {
+  background-image: url(../../public/2e0da62c-4492-4d4d-8135-e66a9a3eab20.png);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+}
+
+.main2 {
+  background-image: url(../../public/background.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+}
