@@ -12,7 +12,6 @@ import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
 
 import Modal from '../components/modal/Modal';
-import HeaderDefault from '../components/header/Header';
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -38,14 +37,14 @@ function page() {
     const [showError, setShowError] = useState(false);
     const [agentesFiltrados, setAgentesFiltrados] = useState([]);
 
-    //janela modal
+//janela modal
 
     const [abrirModal, setAbrirModal] = useState(null);
-    //abre o modal do id do agente
+//abre o modal do id do agente
     const openModal = (id) => {
         setAbrirModal(id);
     };
-    //fechar modal
+//fechar modal
     const closeModal = () => {
         setAbrirModal(null);
     };
@@ -238,128 +237,125 @@ function page() {
     //Criando HTML
     return (
 
-        <div>
-
-            <div className={styles.main} >
-                <div className={styles.searchDiv}>
-                    <button className={styles.mudarPage} onClick={mudar}>mudar</button>
-                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+        <div className={styles.main} >
+            <div className={styles.searchDiv}>
+                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
+                <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
 
 
-                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+                <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+            </div>
+
+            {/* Tela 1 */}
+            <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
+                <input
+                    type={"text"}
+                    value={name}
+                    name={'name'}
+                    placeholder={'name do agente'}
+                    onChange={(e) => setName(e.target.value)} />
+                <input
+                    type={"text"}
+                    value={description}
+                    name={'description'}
+                    placeholder={'Descrição do agente'}
+                    onChange={(e) => setDescription(e.target.value)} />
+                <input
+                    type={"text"}
+                    value={image}
+                    name={'image'}
+                    placeholder={'image do agente'}
+                    onChange={(e) => setImage(e.target.value)} />
+
+
+                {
+                    editButton ? (
+                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+                    ) : (
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+                    )
+                }
+                {//mensagem de erro
+
+                    erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+
+                }
+                {//mensagem de erro
+
+                    url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
+
+                }
+                {//mensagem de erro
+
+                    sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
+
+                }
+            </div>
+
+            {/* Tela 2 */}
+            <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
+                <div className={styles.divInput}>
+                    <input className={styles.searchInput}
+                        type="text"
+                        value={search}
+                        onChange={(e) => {
+                            setSearch(e.target.value);
+                        }}
+                        placeholder={'Digite Aqui'}
+                    />
+                    <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
                 </div>
 
-                {/* Tela 1 */}
-                <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-                    <input
-                        type={"text"}
-                        value={name}
-                        name={'name'}
-                        placeholder={'name do agente'}
-                        onChange={(e) => setName(e.target.value)} />
-                    <input
-                        type={"text"}
-                        value={description}
-                        name={'description'}
-                        placeholder={'Descrição do agente'}
-                        onChange={(e) => setDescription(e.target.value)} />
-                    <input
-                        type={"text"}
-                        value={image}
-                        name={'image'}
-                        placeholder={'image do agente'}
-                        onChange={(e) => setImage(e.target.value)} />
+                {
+                    erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
+                }
 
+                {
+                    erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
+                }
+
+                <div className={styles.cardsContainer}>
 
                     {
-                        editButton ? (
-                            <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+                        agentesFiltrados.length > 0 ? (
+                            agentesFiltrados.map((agente) => (
+                                <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
+                                    <CardsAgents nm={agente.name} img={agente.image} />
+                                 
+                                </div>
+                            ))
                         ) : (
-                            <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+                            agentesLista.map((card) => (
+                                <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
+                                    <CardsAgents nm={card.name} desc={card.description} img={card.image} />
+                                
+                                </div>
+
+                            ))
                         )
                     }
-                    {//mensagem de erro
-
-                        erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
-
-                    }
-                    {//mensagem de erro
-
-                        url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
-
-                    }
-                    {//mensagem de erro
-
-                        sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
-
-                    }
-                </div>
-
-                {/* Tela 2 */}
-                <div style={{ display: div2 ? 'block' : 'none' }} value={div2}>
-                    <div className={styles.divInput}>
-                        <input className={styles.searchInput}
-                            type="text"
-                            value={search}
-                            onChange={(e) => {
-                                setSearch(e.target.value);
-                            }}
-                            placeholder={'Digite Aqui'}
-                        />
-                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
-                    </div>
-
-                    {
-                        erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
-                    }
-
-                    {
-                        erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
-                    }
-
-                    <div className={styles.cardsContainer}>
-
+                    <div className={styles.modalContainer}>
                         {
-                            agentesFiltrados.length > 0 ? (
-                                agentesFiltrados.map((agente) => (
-                                    <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
-                                        <CardsAgents nm={agente.name} img={agente.image} />
+                            //modal
+                            abrirModal ? (
+                                agentesLista.map((agente) => (
+                                    agente.id == abrirModal && (
+                                        <div key={agente.id}>
 
-                                    </div>
-                                ))
-                            ) : (
-                                agentesLista.map((card) => (
-                                    <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
-                                        <CardsAgents nm={card.name} desc={card.description} img={card.image} />
+                                            <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
 
-                                    </div>
 
-                                ))
-                            )
+
+                                        </div>)))
+                            ) : null
                         }
-                        <div className={styles.modalContainer}>
-                            {
-                                //modal
-                                abrirModal ? (
-                                    agentesLista.map((agente) => (
-                                        agente.id == abrirModal && (
-                                            <div key={agente.id}>
-
-                                                <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
-
-
-
-                                            </div>)))
-                                ) : null
-                            }
-                        </div>
                     </div>
-
-
-
                 </div>
+
+
 
             </div>
+
         </div>
     )
 }
