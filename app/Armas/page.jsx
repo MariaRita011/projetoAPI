@@ -115,6 +115,9 @@ function page() {
     }
     function btnscrolldawn() {
         window.scrollTo(0, 9800);
+
+        window.scrollTo(0, 29935);
+
     }
 
     //Funciton de limpar campos
@@ -165,13 +168,26 @@ function page() {
 
     //Function de atualizar
     function update() {
+        if (name.trim() == '' || description.trim() == '' || image.trim() == '') {
+            console.log("não passou pelo popUp");
+            setErro(true)
+            setTimeout(() => {
+                setErro(false)
+            }, 3000)
+
+        } else if (urlValida(image) == false) {
+            setUrl(true)
+            setTimeout(() => {
+                setUrl(false)
+            }, 3000)
+        } else {
         listaAgentes.AtualizarAgente(flag, name, description, image);
 
         setFlag(0);
         setAgentesLista(listaAgentes.agentes)
         setEditButton(false)
         limparCampos()
-        mudar()
+        mudar()}
 
     }
 
@@ -224,12 +240,41 @@ function page() {
         <div>
             <HeaderDefault />
 
-
-
             <div className={styles.main} >
                 <div className={styles.searchDiv}>
                     <button className={styles.mudarPage} onClick={mudar}>mudar</button>
                     <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+
+            {/* Tela 1 */}
+            <div style={{ display: div1 ? 'block' : 'none' }} value={div1}>
+                <input
+                    type={"text"}
+                    value={name}
+                    name={'name'}
+                    placeholder={'name do agente'}
+                    onChange={(e) => setName(e.target.value)} />
+                <input
+                    type={"text"}
+                    value={description}
+                    name={'description'}
+                    placeholder={'Descrição do agente'}
+                    onChange={(e) => setDescription(e.target.value)} />
+                <input
+                    type={"text"}
+                    value={image}
+                    name={'image'}
+                    placeholder={'image do agente'}
+                    onChange={(e) => setImage(e.target.value)} />
+
+
+                {
+                    editButton ? (
+                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+                    ) : (
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+                    )
+                }
+                {//mensagem de erro
 
 
                     <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
@@ -301,6 +346,7 @@ function page() {
                     }
 
                     {
+
                         erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
                     }
 
@@ -322,10 +368,28 @@ function page() {
                                     <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
                                         <CardsAgents nm={card.name} desc={card.description} img={card.image} />
                                         {/* <div className={styles.buttons}>
+
+                        agentesFiltrados.length > 0 ? (
+                            agentesFiltrados.map((agente) => (
+                                <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
+                                    <CardsAgents nm={agente.name} img={agente.image} />
+                                    {/* <div className={styles.buttons}>
+                                        <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(agente)} text={'Excluir'} />
+                                        <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(agente.id)} text={'Editar'} />
+                                    </div> */}
+                                </div>
+                            ))
+                        ) : (
+                            agentesLista.map((card) => (
+                                <div onClick={() => openModal(card.id)} id={card.id} className={styles.cards} key={card.id}>
+                                    <CardsAgents nm={card.name} desc={card.description} img={card.image} />
+                                    {/* <div className={styles.buttons}>
+
                                         <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={() => excluir(card)} text={'Excluir'} />
                                         <Buttons bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={() => edit(card.id)} text={'Editar'} />
                                     </div> */}
                                     </div>
+
 
                                 ))
                             )
@@ -336,6 +400,26 @@ function page() {
                                     agente.id == abrirModal && (
                                         <div key={agente.id}>
                                             <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
+
+                            ))
+                        )
+                    }
+                    <div className={styles.modalContainer}>
+                    {
+                        abrirModal ? (
+                            agentesLista.map((agente) => (
+                                agente.id == abrirModal && (
+                                    <div key={agente.id}>
+                                      
+                                        <Modal nome={agente.name} foto={agente.image} descricao={agente.description} fechar={closeModal} oc={() => excluir(agente)} on={() => edit(agente.id)} />
+                                
+                                 
+                                    
+                                  </div>)))
+                        ) : null
+                    }
+                    </div>
+                </div>
 
                                         </div>)))
                             ) : null

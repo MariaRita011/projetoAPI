@@ -1,7 +1,8 @@
 .modal {
     display: block;
     margin-left: 25%;
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     padding: 1%;
     border-radius: 10px;
     position: fixed;
@@ -9,7 +10,7 @@
     left: 0;
     top: 0;
     width: 50%;
-    height: 70%;
+    height: 86%;
     background-color: rgb(44, 44, 44);
      color: aliceblue;
     /*box-shadow: 1px 1px 36px 4px rgba(255,255,255,0.75);
@@ -17,6 +18,7 @@
 -moz-box-shadow: 1px 1px 36px 4px rgba(255,255,255,0.75); */
    border: solid 1px orange;
   }
+
   .botao{
     padding: 1.5%;
     border-radius: 100%;
@@ -46,6 +48,16 @@
     margin-bottom: 5%;
   }
   
+  @media (max-width: 768px) {
+    .modal{
+      width: 90%;
+      margin-left: 5%;
+      padding: 3%;
+    }
+    .botao{
+          padding: 4%;
+    }
+  }
  
   
 
