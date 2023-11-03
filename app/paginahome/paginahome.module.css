@@ -76,7 +76,6 @@
     border-radius: 4px;
     background-color: #ffffff00;
     border: 1px #ff9100 solid;
-    color: #ff9100;
     transition: 0.3s;
 
 }
@@ -87,8 +86,14 @@
     border-radius: 4px;
     background-color: #ff9100;
     border: 1px #161616f2 solid;
-    color: #161616f2;
     transition: 0.3s;
+}
+
+.buttontext {
+    color: #ff9100;
+}
+.button:hover .buttontext {
+    color: #161616f2;
 }
   
 
