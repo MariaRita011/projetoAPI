@@ -227,7 +227,9 @@ padding-top:1% ;
   .main {
     width: 100%;
   }
-
+.tela1{
+  width: 100%;
+}
   .btnscroll2 {
     position: fixed;
     bottom: 10%;
