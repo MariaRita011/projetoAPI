@@ -239,11 +239,11 @@ function page() {
         <div className={styles.main} >
 
             <HeaderDefault />
-<button className={styles.mudarPage} onClick={mudar}>mudar</button>
+
 
             {/* Tela 1 */}
             <div className={styles.tela1} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-
+            <button className={styles.mudarPage} onClick={mudar}>mudar</button>
 
                     <h1 className={styles.title}>Cadastre seu agente!</h1>
                 <div className={styles.divForm}>

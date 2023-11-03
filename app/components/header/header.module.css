@@ -6,9 +6,10 @@
     width: 100%;
 
 }
-.header2{
+
+.header2 {
     margin-top: -1%;
- 
+
 }
 
 
@@ -19,7 +20,7 @@
 
 .links {
     display: flex;
-    margin-left: 35%;
+    margin-left: 30%;
     text-decoration: none;
     gap: 3rem;
     margin-top: -1%;
@@ -27,17 +28,17 @@
 }
 
 
- .logo{
+.logo {
     margin-left: 5%;
     margin-top: -30%;
-    
- }
 
- .logo1{
-    margin-top: -30%; 
+}
+
+.logo1 {
+    margin-top: -30%;
     margin-left: 5%;
 
- }
+}
 
 
 .icon_header {
@@ -47,6 +48,7 @@
     display: none;
 
 }
+
 .icon_header2 {
     background-color: transparent;
     border: none;
@@ -54,84 +56,68 @@
     display: none;
 
 }
-.imagem{
-    margin-left: 40%;
-    margin-top: -3%;
+
+.linka2 {
+    background-color: orange;
+    height: 5vh;
+    padding: 0.5rem;
+    border-radius: 10px;
+
+    transition: all .35s;
+}
+
+.linka2:hover {
+    background-color: black;
+    border: solid 1px orange;
+
+    transition: all .35s;
+}
+
+.cadastro {
+    color: black;
+}
+
+.cadastro:hover {
+    color: white;
+}
+
+.imagem {
+    margin-left: 42%;
+    margin-top: -3.5%;
 }
 
 @media screen and (max-width: 768px) {
-/* 
-   .logo{
-    margin-bottom: 3% ;
-    margin-left: 80%;
-   }
-   .logo1{
-    display: none;
-   }
-
-    .menu2 {
-        background-color: black;
-        width: 100%;
-        padding: 20px;
-        display: block;
-        height: 3rem;
-    }
-
-    .icon_header {
-        display: block;
-        margin: 20px;
-        
-    }
-    
-
-    .icon_header2 {
-        display: block;
-        margin: 20px;
-        padding-left: 35%;
-        
-    }
 
     .header {
-        position: absolute;
-        flex-direction: column;
-        height: 70%;
-        width: 25%;
-        
-        
-    }
-
-    
-
-
-    .links {
-        flex-direction: column;
-        margin: 20%;
-        padding: 1rem;
-        top: 0;
-        animation-duration: 1s;
-        align-items: center;
-    } */
-    .header{
         width: 100%;
         height: 25vh;
-       text-align: center;
-       flex-direction: column;
-       padding-bottom: 4%;
+        text-align: center;
+        flex-direction: column;
+        padding-bottom: 4%;
     }
-    .links{
-        display: inline;
+
+    .links {
+        
         font-size: 20px;
-    margin-left: 43%;
-      text-align: center;
-        margin-top: 2%;
+        margin-left: 20%;
+        text-align: center;
+        margin-top: -5%;
     }
-    .linka{
-        margin-top: 5%;
-     padding: 1%;
-     margin-left: 2%;
+
+    .linka {
+        margin-top: 2%;
+        padding: 1%;
+        margin-left: 2%;
         width: 30%;
     }
-    .logo1{
+    .linka2{
+        margin-left: -10%;
+      width: 50%;
+    }
+.imagem{
+    margin-left: 0;
+}
+    .logo1 {
         margin-top: 1%;
     }
 }

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import styles from './header.module.css';
 import NavLink from '../navlink/NavLink.jsx'
-
+import Link from 'next/link';
 
 
 const HeaderDefault = () => {
@@ -39,12 +39,12 @@ const HeaderDefault = () => {
 
 
                     <div className={styles.linka}>
-                        <NavLink rota={'/'} texto={'Home'} />
+                        <NavLink rota={'/paginahome'} texto={'Home'} />
                     </div>
 
                     <div className={styles.linka2}>
-
-                        <NavLink rota={'/Armas'} texto={'Cadastro'} />
+                           <Link className={styles.cadastro} href={'/Armas'}><p className={styles.p}>Cadastro</p></Link>
+                     
                     </div>
                 </div>
 
