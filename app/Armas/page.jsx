@@ -12,6 +12,7 @@ import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
 
 import Modal from '../components/modal/Modal';
+import HeaderDefault from '../components/header/Header';
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -236,6 +237,7 @@ function page() {
     return (
 
         <div className={styles.main} >
+            <HeaderDefault />
 <button className={styles.mudarPage} onClick={mudar}>mudar</button>
                 {/* Tela 1 */}
                 <div className={styles.divForm} style={{ display: div1 ? 'block' : 'none' }} value={div1}>

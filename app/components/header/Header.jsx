@@ -1,18 +1,18 @@
 import Image from 'next/image';
 import styles from './header.module.css';
 import NavLink from '../navlink/NavLink.jsx'
-import { AiOutlineMenu } from 'react-icons/ai'
-import { AiOutlineClose } from 'react-icons/ai';
+/* import { AiOutlineMenu } from 'react-icons/ai'
+import { AiOutlineClose } from 'react-icons/ai'; */
 
 
 const HeaderDefault = () => {
 
     return (
-        <div>
+        <div className={styles.header2}>
             <div className={styles.menu2}>
 
                 <div className={styles.icon_header}>
-                    <AiOutlineMenu />
+                    {/* <AiOutlineMenu /> */}
                 </div>
 
                 <div className={styles.imageLogo}>
@@ -29,7 +29,10 @@ const HeaderDefault = () => {
                     <AiOutlineMenu />
                 </div> */}
                 <div className={styles.icon_header2}>
-                    <AiOutlineClose />
+               {/*      <AiOutlineClose /> */}
+                </div>
+                <div className={styles.imagem}>
+                    <Image src={'/_CSGO_-_White__Essential_T-Shirt_for_Sale_by_drhollowpoint-removebg-preview.png'} width={100} height={100}/>
                 </div>
                 <div className={styles.links} id={styles.links}>
 
@@ -38,7 +41,7 @@ const HeaderDefault = () => {
                         <NavLink rota={'/'} texto={'Home'} />
                     </div>
 
-                    <div className={styles.linka}>
+                    <div className={styles.linka2}>
 
                         <NavLink rota={'/Armas'} texto={'Cadastro'} />
                     </div>
