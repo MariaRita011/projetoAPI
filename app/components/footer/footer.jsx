@@ -5,10 +5,10 @@ import Image from "next/image"
 import Link from "next/link"
 
 import styles from "./footer.module.css"
-
+/* 
 import {VscGithub} from 'react-icons/vsc'
 
-import {SiLinktree} from 'react-icons/si'
+import {SiLinktree} from 'react-icons/si' */
 
 
 
@@ -29,9 +29,9 @@ export const Footer =()=>{
      </div>
      <div >
         <div className={styles.icons}>
-     <VscGithub />
+
      <Link href={"https://linktr.ee/giuu509?utm_source=linktree_admin_share"} target="blanc" />
-     <SiLinktree />
+
      <Link href={"https://github.com/Liviadbelao?tab=repositories"} target="blanc">
    </Link>
    </div>

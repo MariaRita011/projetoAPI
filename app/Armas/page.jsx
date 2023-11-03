@@ -13,6 +13,7 @@ import NavMsg from '../components/navmsg/NavMsg';
 
 import Modal from '../components/modal/Modal';
 import HeaderDefault from '../components/header/Header';
+import { Footer } from '../components/footer/footer';
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -243,9 +244,9 @@ function page() {
 
             {/* Tela 1 */}
             <div className={styles.tela1} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-            <button className={styles.mudarPage} onClick={mudar}>mudar</button>
+                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
 
-                    <h1 className={styles.title}>Cadastre seu agente!</h1>
+                <h1 className={styles.title}>Cadastre seu agente!</h1>
                 <div className={styles.divForm}>
 
 
@@ -285,13 +286,13 @@ function page() {
                     <p className={styles.p}>Você pode acessar tambem o site oficial, através do QR code disponibilizado</p>
 
                     {editButton ? (
-    <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
-) : (
-    <>
-        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
-        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={mudar} text={'Mudar'} />
-    </>
-)}
+                        <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+                    ) : (
+                        <>
+                            <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+                            <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={mudar} text={'Mudar'} />
+                        </>
+                    )}
 
 
                     {//mensagem de erro
@@ -384,7 +385,7 @@ function page() {
 
 
             </div>
-
+            <Footer />
         </div>
     )
 }
