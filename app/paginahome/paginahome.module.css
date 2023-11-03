@@ -1,38 +1,124 @@
-
-
 .parallax {
-    background-image: url(../../public/imagem\ de\ fundo\ CSGO.jpeg);
+    background-image: url(../../public/wallpaper_nologo.jpg);
     background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
-    height: 100vh;
     width: 100%;
+    min-height: 100vh;
+    padding-bottom: 10rem;
 }
 
 .mainContent {
-    position: relative;
-    z-index: 1;
-    height: 100%; 
-    margin-bottom: 10%;
-  }
-
+    color: #eee;
+    margin: 30% 15rem 0 15rem;
+}
 
 .titulo {
     text-align: center;
-    color: whitesmoke;
-    font-family: csgo;
-    padding-top: 5%;
+    color: #ff9100;
+    text-shadow: #ffa200e6 0px 0px 32px;
+    font-size: 20px;
+    padding-top: 2rem;
+}
+
+.icons {
+    font-size: 20px;
+    margin: 0.3rem;
+    color: #c1c1c1;
+}
+
+.icons:hover {
+    color: #eee;
+}
+
+.navBarMain {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+    background-color: #161616f2;
+    background: linear-gradient(#161616f2, #161616f2) padding-box, linear-gradient(to right, rgba(22,13,135,1), rgba(36,23,196,1), rgba(255,156,16,1), rgba(255,204,16,1) ) border-box;
+    border: 2px solid transparent;
+}
+
+.link {
+    color: #eee;
+    font-size: 20px;
+}
+.link:hover {
+    color: #ff9100;
+}
+
+.title {
+    color: #eee;
+    font-size: 25px;
+    margin-bottom: 0.5rem;
+}
+
+.textDiv {
+    background-color: rgba(22, 22, 22, 0.95);
+   padding: 1rem;
+   background: linear-gradient(#161616f2, #161616f2) padding-box, linear-gradient(to right, rgba(22,13,135,1), rgba(36,23,196,1), rgba(255,156,16,1), rgba(255,204,16,1) ) border-box;
+    border: 2px solid transparent;
+}
+
+.textsDivs {
+    margin-bottom: 3rem;
+}
+
+.text {
+    font-size: 18px;
 }
 
 .button {
-    width: 7%;
-    text-align: center;
+    padding: 0.4rem 0.7rem;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: #ffffff00;
+    border: 1px #ff9100 solid;
+    color: #ff9100;
+    transition: 0.3s;
+
 }
 
-.manu {
-    display: flex;
-    text-align: center;
-    margin-top: 5%;
+.button:hover {
+    padding: 0.4rem 0.7rem;
+    font-size: 18px;
+    border-radius: 4px;
+    background-color: #ff9100;
+    border: 1px #161616f2 solid;
+    color: #161616f2;
+    transition: 0.3s;
 }
+  
 
+@media (max-width: 600px) {
+    .navBarMain {
+        flex-direction: column;
+    }
+    .mainContent {
+        color: #eee;
+        margin: 100% 1rem 0 1rem;
+    }
+    .titulo {
+        font-size: 30px;
+    }
+    .iconsdiv {
+        display: flex;
+        margin: 0.5rem;
+    }
+    .icons {
+        font-size: 30px;
+    }
+    .link {
+        font-size: 30px;
+    }
+    .title {
+        font-size: 40px;
+    }
+    .text {
+        font-size: 20px;
+    }
+
+  }
+  
