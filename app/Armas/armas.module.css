@@ -83,16 +83,15 @@
   text-align: center;
 }
 
-.main {
-  background-image: url(../../public/background.jpg);
+.tela1 {
+  background-image: url(../../public/2e0da62c-4492-4d4d-8135-e66a9a3eab20.png);
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-
-
+  padding-top: 10%;
 }
 
 .divMain {
@@ -102,11 +101,17 @@
   align-items: center;
 }
 
+.title {
+  text-align: center;
+    color: #ff9100;
+    text-shadow: #ffa200e6 0px 0px 32px;
+margin: 1rem;
+}
+
 .divForm {
   background-color: rgb(28, 28, 28);
   text-align: center;
   position: relative;
-  margin-top: 10%;
   align-items: center;
   width: 50%;
   left: 25%;
@@ -206,7 +211,6 @@
   background-color: #ff7803b9;
   border-radius: 8px;
   font-size: 16px;
-  padding: 0.1rem 0.5rem;
   border: none;
 }
 
@@ -265,15 +269,6 @@ padding-top:1% ;
     width: 100%;
   }
 
-}
-
-.main {
-  background-image: url(../../public/2e0da62c-4492-4d4d-8135-e66a9a3eab20.png);
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  height: 100vh;
 }
 
 .main2 {

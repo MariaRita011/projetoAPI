@@ -1,8 +1,7 @@
 import Image from 'next/image';
 import styles from './header.module.css';
 import NavLink from '../navlink/NavLink.jsx'
-/* import { AiOutlineMenu } from 'react-icons/ai'
-import { AiOutlineClose } from 'react-icons/ai'; */
+
 
 
 const HeaderDefault = () => {
@@ -29,10 +28,12 @@ const HeaderDefault = () => {
                     <AiOutlineMenu />
                 </div> */}
                 <div className={styles.icon_header2}>
+
                {/*      <AiOutlineClose /> */}
                 </div>
                 <div className={styles.imagem}>
                     <Image src={'/_CSGO_-_White__Essential_T-Shirt_for_Sale_by_drhollowpoint-removebg-preview.png'} width={100} height={100}/>
+
                 </div>
                 <div className={styles.links} id={styles.links}>
 

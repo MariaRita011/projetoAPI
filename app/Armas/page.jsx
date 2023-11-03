@@ -42,7 +42,7 @@ function page() {
     const openModal = (id) => {
         setAbrirModal(id);
     };
-    
+
     //fechar modal
     const closeModal = () => {
         setAbrirModal(null);
@@ -237,18 +237,23 @@ function page() {
     return (
 
         <div className={styles.main} >
+
             <HeaderDefault />
 <button className={styles.mudarPage} onClick={mudar}>mudar</button>
-                {/* Tela 1 */}
-                <div className={styles.divForm} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-                    <h1>Cadastre seu agente!</h1>
 
-                        
-                        <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+            {/* Tela 1 */}
+            <div className={styles.tela1} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
 
 
-                        <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
-                  
+                    <h1 className={styles.title}>Cadastre seu agente!</h1>
+                <div className={styles.divForm}>
+
+
+                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
+
+
+                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+
                     <div className={styles.divInp}>
                         <div className={styles.sla}>
                             <input className={styles.inputForm}
@@ -279,37 +284,39 @@ function page() {
                     </div>
                     <p className={styles.p}>Você pode acessar tambem o site oficial, através do QR code disponibilizado</p>
 
-                    {
-                        editButton ? (
-                            <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
-                        ) : (
-                            <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
-                        )
+                    {editButton ? (
+    <ButtonsAct bdcor={'#000123'} bkcor={'#3F6BE1'} cor={'#000123'} func={update} text={'Atualizar'} />
+) : (
+    <>
+        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={adicionar} text={'Adicionar'} />
+        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={mudar} text={'Mudar'} />
+    </>
+)}
+
+
+                    {//mensagem de erro
+
+                        erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+
                     }
+                    {//mensagem de erro
 
-                
-                {//mensagem de erro
+                        url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
 
-                    erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+                    }
+                    {//mensagem de erro
 
-                }
-                {//mensagem de erro
+                        sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
 
-                    url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
-
-                }
-                {//mensagem de erro
-
-                    sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
-
-                }
-           </div>
+                    }
+                </div>
+            </div>
 
             {/* Tela 2 */}
             <div className={styles.main2} style={{ display: div2 ? 'block' : 'none' }} value={div2}>
 
                 <div className={styles.searchDiv}>
-                    
+
                     <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
 
 
@@ -326,7 +333,8 @@ function page() {
                         placeholder={'Digite Aqui'}
                     />
                     <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
-                 
+                    <ButtonsAct bdcor={'rgba(0, 0, 0, 0)'} bkcor={'#FA7115'} cor={'black'} func={mudar} text={'Voltar'} />
+
                 </div>
 
                 {
@@ -375,7 +383,7 @@ function page() {
 
 
 
-         </div>
+            </div>
 
         </div>
     )
