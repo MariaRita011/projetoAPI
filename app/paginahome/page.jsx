@@ -6,6 +6,7 @@ import { BsInstagram } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa"; */
 import CardPageHome from '../components/cardpagehome/CardPageHome';
 import HeaderDefault from '../components/header/Header';
+import { Footer } from '../components/footer/footer';
 
 const Home = () => {
 
@@ -38,6 +39,7 @@ const Home = () => {
                     <button className={styles.button}><a className={styles.buttontext} href="/Armas" target="_blank">Confira Aqui!</a></button>
                 </div>
             </div>
+            <Footer/>
         </div>
 
     )
