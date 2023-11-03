@@ -1,0 +1,37 @@
+.title {
+    color: #F1F1F1;
+    font-size: 20px;
+    margin: 0.5rem;
+}
+
+.photos {
+    margin: 1rem;   
+}
+
+.desc {
+    color: #F1F1F1;
+    font-size: 14px;
+    margin-top: 2rem;
+    margin: 1rem;
+    text-align: justify;
+    margin-bottom: 10%;
+}
+.buttons {
+    position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      text-align: center;
+}
+
+.line {
+    border-color: #F1F1F1;
+    width: 50%;
+    height: 1px;
+    margin: 0.2rem;
+}
+
+.lines {
+    display: flex;
+    align-items: center;
+}

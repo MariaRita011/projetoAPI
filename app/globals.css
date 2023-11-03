@@ -3,9 +3,14 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+
+    list-style: none;
+    font-family: Oswald;
+    scroll-behavior: smooth;
     list-style: none;
   }
   
   body {
     height: 100vh;
   }
+
