@@ -258,7 +258,6 @@ function page() {
 
                     <div className={styles.divInp}>
                         <div className={styles.sla}>
-                            
                             <Inputs type={'text'} valor={name} name={'name'} ph={'Nome do agente'} on={(e) => setName(e.target.value)}/>
                             <Inputs type={'text'} valor={description} name={'description'} ph={'Descrição do agente'} on={(e) => setDescription(e.target.value)}/>
                             <Inputs type={'text'} valor={image} name={'image'} ph={'Imagem do agente'} on={(e) => setImage(e.target.value)}/>
