@@ -283,7 +283,7 @@ function page() {
 
                     {//mensagem de erro
 
-                        erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+                        erro ? <NavMsg tipo={"erro"} msg={'Preecha os campos'} /> : null
 
                     }
                     {//mensagem de erro
