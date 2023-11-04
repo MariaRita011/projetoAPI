@@ -14,6 +14,7 @@ import NavMsg from '../components/navmsg/NavMsg';
 import Modal from '../components/modal/Modal';
 import HeaderDefault from '../components/header/Header';
 import { Footer } from '../components/footer/footer';
+import Inputs from '../components/inputs/Inputs';
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -257,24 +258,10 @@ function page() {
 
                     <div className={styles.divInp}>
                         <div className={styles.sla}>
-                            <input className={styles.inputForm}
-                                type={"text"}
-                                value={name}
-                                name={'name'}
-                                placeholder={'Nome do agente'}
-                                onChange={(e) => setName(e.target.value)} />
-                            <input className={styles.inputForm}
-                                type={"text"}
-                                value={description}
-                                name={'description'}
-                                placeholder={'Descrição do agente'}
-                                onChange={(e) => setDescription(e.target.value)} />
-                            <input className={styles.inputForm}
-                                type={"text"}
-                                value={image}
-                                name={'image'}
-                                placeholder={'Imagem do agente'}
-                                onChange={(e) => setImage(e.target.value)} />
+                            
+                            <Inputs type={'text'} valor={name} name={'name'} ph={'Nome do agente'} on={(e) => setName(e.target.value)}/>
+                            <Inputs type={'text'} valor={description} name={'description'} ph={'Descrição do agente'} on={(e) => setDescription(e.target.value)}/>
+                            <Inputs type={'text'} valor={image} name={'image'} ph={'Imagem do agente'} on={(e) => setImage(e.target.value)}/>
 
                         </div>
 

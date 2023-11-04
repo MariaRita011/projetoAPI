@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <main className={styles.main}>
       <HeaderDefault/>
+      
      </main>
   )
 }

@@ -1,0 +1,13 @@
+.inputForm {
+    width: 80%;
+    margin: 20px 0;
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    background-color: #32353c;
+    outline: none;
+    font-size: 15px;
+    grid-area: input;
+    border: 1px solid #32353c;
+    display: flex;
+  }
