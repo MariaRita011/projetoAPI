@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './header.module.css';
-import NavLink from '../navlink/NavLink.jsx'
+import NavLink from '../NavLink/NavLink.jsx'
 import Link from 'next/link';
 
 
