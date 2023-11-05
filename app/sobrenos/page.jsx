@@ -27,7 +27,6 @@ export default function SobreNos() {
         setConteudo("Lívia");
         setDescription("Aluna de desenvolvimento de sistemas, cursando seu primeiro ano");
         setImage("/liviA.jpg")
-
     }
 
     function Agente3() {
@@ -43,7 +42,6 @@ export default function SobreNos() {
         setDescription("Aluna de desenvolvimento de sistemas, cursando seu primeiro ano");
         setImage("/cancian2.jpg")
     }
-    
 
     function Agente5() {
         setRenderizar(true);
@@ -58,44 +56,41 @@ export default function SobreNos() {
         setDescription("Aluno de desenvolvimento de sistemas, cursando  seu primeiro ano");
         setImage("/nicolas.jpg")
     }
-    
-
-
-    
 
     return (
         <div className={styles.divMain}>
-             <HeaderDefault/>
-            
-        {/* <h1 className={styles.h1}>Nossos Agentes</h1> */}
+            <HeaderDefault />
 
-        <div className={styles.container}>
+            {/* <h1 className={styles.h1}>Nossos Agentes</h1> */}
 
-            <div className={styles.btnTodos}>
-            <button className={styles.butao} onClick={Agente1}> ⚔️ Giulia</button><br />
-            <button className={styles.butao}  onClick={Agente2}>⚔️ Lívia</button><br />
-            <button className={styles.butao}  onClick={Agente3}>⚔️ Manuela</button><br />
-            <button className={styles.butao}  onClick={Agente4}>⚔️ Cancian</button><br />
-            <button className={styles.butao}  onClick={Agente5}>⚔️ Maria Rita</button><br />
-            <button className={styles.butao}  onClick={Agente6}>⚔️ Nicolas</button><br />
-            </div>
-            {renderizar && (
-                <div className={styles.ladoDireito}>
-                    
-                  
-                    <Image className={styles.image} src={image} width={200} height={190}/>
-                    <div className={styles.teste}>
-                    <h1 className={styles.nome}>{conteudo}</h1>
-                    <p className={styles.p}> {description}</p>
-                    </div>
+            <div className={styles.container}>
+
+                <div className={styles.btnTodos}>
+                    <button className={styles.butao} onClick={Agente1}> ⚔️ Giulia</button><br />
+                    <button className={styles.butao} onClick={Agente2}>⚔️ Lívia</button><br />
+                    <button className={styles.butao} onClick={Agente3}>⚔️ Manuela</button><br />
+                    <button className={styles.butao} onClick={Agente4}>⚔️ Cancian</button><br />
+                    <button className={styles.butao} onClick={Agente5}>⚔️ Maria Rita</button><br />
+                    <button className={styles.butao} onClick={Agente6}>⚔️ Nicolas</button><br />
                 </div>
-            )}
-        </div>
-        <div className={styles.engenhocas}>
+                {renderizar && (
+                    <div className={styles.ladoDireito}>
 
-       
-        {/* <Footer/> */}
-        </div>
+
+                        <Image className={styles.image} src={image} width={200} height={200} />
+                        <div className={styles.teste}>
+                            <h1 className={styles.nome}>{conteudo}</h1>
+                            <p className={styles.p}> {description}</p>
+                        </div>
+                    </div>
+                )}
+            </div>
+            <div className={styles.engenhocas}>
+
+<div className={styles.footer}>
+</div>
+                <Footer/> 
+            </div>
         </div>
     );
 }
