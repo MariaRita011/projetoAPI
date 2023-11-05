@@ -80,8 +80,9 @@ const Home = () => {
               <div className={styles.inputBox}>
                 <Inputs type={'email'} valor={email} name={'email'} ph={"Digite seu email"}   on={(e) => setEmail(e.target.value)}  />
               </div>
+             
               <div className={styles.inputBox}>
-               
+              <p className={styles.p} >⚠️ Você só poderá acessar o site depois que o login estiver feito!</p>
                   <button onClick={adicionar}  className={styles.link}> Cadastre-se</button>
 
               </div>
