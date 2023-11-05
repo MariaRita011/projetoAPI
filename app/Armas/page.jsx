@@ -14,6 +14,9 @@ import NavMsg from '../components/navmsg/NavMsg';
 import Modal from '../components/modal/Modal';
 import HeaderDefault from '../components/header/Header';
 import { Footer } from '../components/footer/footer';
+import Inputs from '../components/inputs/Inputs';
+import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -116,7 +119,7 @@ function page() {
     //Function rolar a pag para baixo
     function btnscrolldawn() {
         window.scrollTo(0, 9800);
-        window.scrollTo(0, 29935);
+        window.scrollTo(0, 40000);
     }
 
     //Funciton de limpar campos
@@ -239,42 +242,20 @@ function page() {
 
         <div className={styles.main} >
 
-            <HeaderDefault />
+            <HeaderDefault /> 
 
 
             {/* Tela 1 */}
             <div className={styles.tela1} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
 
                 <h1 className={styles.title}>Cadastre seu agente!</h1>
                 <div className={styles.divForm}>
 
-
-                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
-
-
-                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
-
                     <div className={styles.divInp}>
                         <div className={styles.sla}>
-                            <input className={styles.inputForm}
-                                type={"text"}
-                                value={name}
-                                name={'name'}
-                                placeholder={'Nome do agente'}
-                                onChange={(e) => setName(e.target.value)} />
-                            <input className={styles.inputForm}
-                                type={"text"}
-                                value={description}
-                                name={'description'}
-                                placeholder={'Descrição do agente'}
-                                onChange={(e) => setDescription(e.target.value)} />
-                            <input className={styles.inputForm}
-                                type={"text"}
-                                value={image}
-                                name={'image'}
-                                placeholder={'Imagem do agente'}
-                                onChange={(e) => setImage(e.target.value)} />
+                            <Inputs type={'text'} valor={name} name={'name'} ph={'Nome do agente'} on={(e) => setName(e.target.value)}/>
+                            <Inputs type={'text'} valor={description} name={'description'} ph={'Descrição do agente'} on={(e) => setDescription(e.target.value)}/>
+                            <Inputs type={'text'} valor={image} name={'image'} ph={'Imagem do agente'} on={(e) => setImage(e.target.value)}/>
 
                         </div>
 
@@ -297,7 +278,7 @@ function page() {
 
                     {//mensagem de erro
 
-                        erro ? <NavMsg tipo={"erro"} msg={'preecha os campos'} /> : null
+                        erro ? <NavMsg tipo={"erro"} msg={'Preecha os campos'} /> : null
 
                     }
                     {//mensagem de erro
@@ -318,10 +299,8 @@ function page() {
 
                 <div className={styles.searchDiv}>
 
-                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
-
-
-                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+                    <div className={styles.btnscroll} onClick={btnscroll}><AiOutlineArrowUp className={styles.arrows} /></div>
+                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>< AiOutlineArrowDown className={styles.arrows} /></div>
                 </div>
 
                 <div className={styles.divInput}>
@@ -333,8 +312,10 @@ function page() {
                         }}
                         placeholder={'Digite Aqui'}
                     />
+                    <div className={styles.butonsDivInput}>
                     <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
                     <ButtonsAct bdcor={'rgba(0, 0, 0, 0)'} bkcor={'#FA7115'} cor={'black'} func={mudar} text={'Voltar'} />
+                    </div>
 
                 </div>
 
@@ -385,7 +366,7 @@ function page() {
 
 
             </div>
-            <Footer />
+             <Footer /> 
         </div>
     )
 }

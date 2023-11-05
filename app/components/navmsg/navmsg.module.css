@@ -2,9 +2,10 @@
     text-align: center;
     padding: 1%;
     color: #fff;
-    width: 30%;
+    width: 100%;
+    margin-top: 5%;
     border-radius: 8px;
-    margin-left: 35%;
+    
 }
 #sucesso{
     background-color: green;

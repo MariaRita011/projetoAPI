@@ -10,7 +10,7 @@
   left: 0;
   top: 0;
   width: 50%;
-  height: 86%;
+
   color: aliceblue;
   background-color: rgb(36, 36, 36);
   border: solid 1px orange;
@@ -44,7 +44,7 @@
   border-radius: 100%;
   background-color: #ff7803b9;
   margin-left: 90%;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   border: none;
 }
 
@@ -74,12 +74,22 @@
 
 @media (max-width: 768px) {
   .modal {
-    width: 90%;
-    margin-left: 5%;
+    width: 95%;
+    margin-left: 2.5%;
     padding: 3%;
+
   }
 
   .botao {
     padding: 4%;
+  }
+
+  .bt {
+   
+    width: 100%;
+  }
+
+  .texto {
+    font-size: 14px;
   }
 }
