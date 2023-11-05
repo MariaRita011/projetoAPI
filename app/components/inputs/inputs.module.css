@@ -11,3 +11,9 @@
     border: 1px solid #32353c;
     display: flex;
   }
+
+  @media (max-width: 780px) {
+    .inputForm {
+      width: 100%;
+    }
+  }

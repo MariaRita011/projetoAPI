@@ -15,6 +15,8 @@ import Modal from '../components/modal/Modal';
 import HeaderDefault from '../components/header/Header';
 import { Footer } from '../components/footer/footer';
 import Inputs from '../components/inputs/Inputs';
+import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -240,21 +242,14 @@ function page() {
 
         <div className={styles.main} >
 
-            <HeaderDefault />
+            <HeaderDefault /> 
 
 
             {/* Tela 1 */}
             <div className={styles.tela1} style={{ display: div1 ? 'block' : 'none' }} value={div1}>
-                <button className={styles.mudarPage} onClick={mudar}>mudar</button>
 
                 <h1 className={styles.title}>Cadastre seu agente!</h1>
                 <div className={styles.divForm}>
-
-
-                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
-
-
-                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
 
                     <div className={styles.divInp}>
                         <div className={styles.sla}>
@@ -304,10 +299,8 @@ function page() {
 
                 <div className={styles.searchDiv}>
 
-                    <div className={styles.btnscroll} onClick={btnscroll}>🔝</div>
-
-
-                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>⬇️</div>
+                    <div className={styles.btnscroll} onClick={btnscroll}><AiOutlineArrowUp className={styles.arrows} /></div>
+                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>< AiOutlineArrowDown className={styles.arrows} /></div>
                 </div>
 
                 <div className={styles.divInput}>
@@ -319,8 +312,10 @@ function page() {
                         }}
                         placeholder={'Digite Aqui'}
                     />
+                    <div className={styles.butonsDivInput}>
                     <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
                     <ButtonsAct bdcor={'rgba(0, 0, 0, 0)'} bkcor={'#FA7115'} cor={'black'} func={mudar} text={'Voltar'} />
+                    </div>
 
                 </div>
 
@@ -371,7 +366,7 @@ function page() {
 
 
             </div>
-            <Footer />
+            {/* <Footer /> */}
         </div>
     )
 }
