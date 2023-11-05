@@ -54,7 +54,7 @@
 .ladoDireito {
   color: #eee;
   background: #393939;
-  height: 89%;
+
   display: flex;
   flex-direction: column;
   width: 350px;
@@ -66,18 +66,19 @@
   box-shadow: 11px 10px 42px 0px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 11px 10px 42px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 11px 10px 42px 0px rgba(0, 0, 0, 0.75);
-  
+
 }
-.teste{
+
+.teste {
   margin-top: 5%;
 }
 
-.p{
+.p {
   margin: 0;
   top: 0;
   bottom: 0;
   font-size: 20px;
-  
+
 }
 
 
@@ -104,18 +105,20 @@
 
 @media (max-width: 780px) {
 
-  .container{
+  .container {
     height: 110%;
     width: 95%;
     flex-direction: column;
     margin-top: 35%;
   }
 
-   .ladoDireito{
+  .ladoDireito {
     width: 80%;
     height: 0%;
+
   }
-/*
+
+  /*
   .p{
     font-size: 15px;
   }
@@ -144,6 +147,6 @@
  */
   .footer {
     height: 55rem;
-  } 
+  }
 
 }

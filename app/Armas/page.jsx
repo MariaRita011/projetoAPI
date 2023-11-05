@@ -150,8 +150,17 @@ function page() {
 
     //Function de excluir um agente
     const excluir = (param) => {
-        listaAgentes.excluirAgente(param); // Remova o agente da instância compartilhada
-        setAgentesLista(listaAgentes.getListaAgentes()); // Puxa a lista para o varivel local que exibe no map
+        listaAgentes.excluirAgente(param); 
+        const novaListaAgentes = listaAgentes.getListaAgentes();
+        setAgentesLista(novaListaAgentes);
+    
+        // Atualizando a lista filtrada após a exclusão
+        const novaListaFiltrada = novaListaAgentes.filter(agente => {
+            return agente.name.toLowerCase().includes(search.toLowerCase());
+        });
+    
+        setAgentesFiltrados(novaListaFiltrada);
+       
     };
 
     //Function de editar um agente
@@ -348,7 +357,13 @@ function page() {
                                 </div>
 
                             ))
-                        )) : <p>Carregando..</p>
+                        )) :( <RotatingLines
+                        strokeColor="orange"
+                        strokeWidth="5"
+                        animationDuration="0.75"
+                        width="96"
+                        visible={true}
+                      />)
                     }
                     <div className={styles.modalContainer}>
                         {
