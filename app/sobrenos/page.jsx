@@ -3,8 +3,11 @@
 import React, { useState } from "react";
 import styles from './sobrenos.module.css';
 import Image from "next/image";
+import HeaderDefault from "../components/header/Header";
 
 import Agente from "@/models/agente";
+import { Footer } from "../components/footer/footer";
+
 
 export default function SobreNos() {
     const [renderizar, setRenderizar] = useState(false);
@@ -15,14 +18,14 @@ export default function SobreNos() {
     function Agente1() {
         setRenderizar(true);
         setConteudo("Giulia");
-        setDescription("aluna de desenvolvimento de sistemas");
+        setDescription("Aluna de desenvolvimento de sistemas, cursando  seu primeiro ano ");
         setImage("/giulia.jpg")
     }
 
     function Agente2() {
         setRenderizar(true);
         setConteudo("Lívia");
-        setDescription("Aluna de desenvolvimente de sistemas");
+        setDescription("Aluna de desenvolvimento de sistemas, cursando seu primeiro ano");
         setImage("/liviA.jpg")
 
     }
@@ -30,37 +33,41 @@ export default function SobreNos() {
     function Agente3() {
         setRenderizar(true);
         setConteudo("Manuela");
-        setDescription("Aluna de desenvolvimente de sistemas");
+        setDescription("Aluna de desenvolvimento de sistemas, cursando seu primeiro ano");
         setImage("/manuela.jpg")
     }
 
     function Agente4() {
         setRenderizar(true);
         setConteudo("Cancian");
-        setDescription("aluna de desenvolvimento de sistemas");
-        setImage("/eu linda liinda.jpg")
+        setDescription("Aluna de desenvolvimento de sistemas, cursando seu primeiro ano");
+        setImage("/cancian2.jpg")
     }
     
 
     function Agente5() {
         setRenderizar(true);
         setConteudo("Maria rita");
-        setDescription("Aluna de desenvolvimente de sistemas");
+        setDescription("Aluna de desenvolvimento de sistemas, cursando  seu primeiro ano");
+        setImage("/maria rita.jpg")
     }
 
     function Agente6() {
         setRenderizar(true);
         setConteudo("Nicolas");
-        setDescription("Aluna de desenvolvimente de sistemas");
+        setDescription("Aluno de desenvolvimento de sistemas, cursando  seu primeiro ano");
+        setImage("/nicolas.jpg")
     }
+    
 
 
     
 
     return (
         <div className={styles.divMain}>
+             <HeaderDefault/>
             
-        <h1 className={styles.h1}>Nossos Agentes</h1>
+        {/* <h1 className={styles.h1}>Nossos Agentes</h1> */}
 
         <div className={styles.container}>
 
@@ -83,6 +90,11 @@ export default function SobreNos() {
                     </div>
                 </div>
             )}
+        </div>
+        <div className={styles.engenhocas}>
+
+       
+        {/* <Footer/> */}
         </div>
         </div>
     );

@@ -7,6 +7,9 @@
   height: 100vh;
   width: 100%;
   padding-top: 10%;
+  margin: 0;
+  padding: 0;
+
 }
 
 
@@ -70,7 +73,7 @@
   margin: 0;
   top: 0;
   bottom: 0;
-  font-size: 25px;
+  font-size: 20px;
   
 }
 
@@ -102,17 +105,20 @@
 @media (max-width: 780px) {
 
   .container{
-    height: 60%;
+    height:80%;
     width: 95%;
+    flex-direction: column;
+    margin-top: 35%;
   }
 
   .ladoDireito{
     width: 60%;
-    height: 60%;
+    height: 40%;
+
   }
 
   .p{
-    font-size: 19px;
+    font-size: 15px;
   }
 
   .image{
@@ -122,5 +128,21 @@
     
   }
 
+ .engenhocas{
+  bottom: 0;
+  position: absolute;
+  background-color: black;
+  gap: 30%;
+  padding: 2%;
+  display: flex;
+  width: 100%;
+  margin-bottom: -20%;
+  margin: 0  ;
+ }
 
-}
+ .btnTodos{
+  font-size: 10px;
+ 
+ 
+
+}}
