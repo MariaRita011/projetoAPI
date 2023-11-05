@@ -76,7 +76,7 @@ const Home = () => {
                 <Inputs type={'date'} valor={data} name={'data'} ph={"Digite sua data de aniverário"} on={(e) => setData(e.target.value)} />
               </div>
               <div className={styles.inputBox}>
-                <Inputs type={'number'} valor={tell}  name={'tell'} ph={"Digite seu telefone"} on={(e) => setTell(e.target.value)} />
+                <Inputs type={'tell'} valor={tell} max={11} name={'tell'} ph={"Digite seu telefone"} on={(e) => setTell(e.target.value)} />
               </div>
               <div className={styles.inputBox}>
                 <Inputs type={'email'} valor={email} name={'email'} ph={"Digite seu email"}   on={(e) => setEmail(e.target.value)}  />

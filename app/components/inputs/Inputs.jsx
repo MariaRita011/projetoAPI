@@ -1,6 +1,6 @@
 import styles from './inputs.module.css'
 
-const Inputs=({ type, name, valor, ph, on})=>{
+const Inputs=({ type, name, valor, ph, on, max})=>{
     return(
         <div>
         <input className={styles.inputForm}
@@ -8,6 +8,7 @@ const Inputs=({ type, name, valor, ph, on})=>{
         value={valor}
         name={name}
         placeholder={ph}
+        maxLength={max}
         onChange={on} required/>
 
         </div>
