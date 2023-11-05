@@ -1,9 +1,10 @@
 import styles from './paginahome.module.css'
-/* import { BsSteam } from "react-icons/bs";
+
+ import { BsSteam } from "react-icons/bs";
 import { FaTwitch } from "react-icons/fa";
 import { BsTwitter } from "react-icons/bs";
 import { BsInstagram } from "react-icons/bs";
-import { FaFacebookF } from "react-icons/fa"; */
+import { FaFacebookF } from "react-icons/fa"; 
 import CardPageHome from '../components/cardpagehome/CardPageHome';
 import HeaderDefault from '../components/header/Header';
 import { Footer } from '../components/footer/footer';
@@ -18,11 +19,11 @@ const Home = () => {
             <div className={styles.mainContent}>
                 <div className={styles.navBarMain}>
                     <div className={styles.iconsdiv}>
-                       {/*  <a href="https://store.steampowered.com/app/730/CounterStrike_2/?l=portuguese" target="_blank">< BsSteam className={styles.icons} /></a>
+                      <a href="https://store.steampowered.com/app/730/CounterStrike_2/?l=portuguese" target="_blank">< BsSteam className={styles.icons} /></a>
                         <a href="https://www.twitch.tv/directory/category/counter-strike" target="_blank">< FaTwitch className={styles.icons} /></a>
                         <a href="https://twitter.com/csgo" target="_blank">< BsTwitter className={styles.icons} /></a>
                         <a href="https://www.facebook.com/CounterStrike" target="_blank">< FaFacebookF className={styles.icons} /></a>
-                        <a href="https://www.instagram.com/csgo_dev/" target="_blank">< BsInstagram className={styles.icons} /></a> */}
+                        <a href="https://www.instagram.com/csgo_dev/" target="_blank">< BsInstagram className={styles.icons} /></a> 
                     </div>
                     <div>
                         <p><a className={styles.link} href="https://blog.counter-strike.net" target="_blank">Página Oficial</a></p>

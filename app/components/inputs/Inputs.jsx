@@ -8,7 +8,7 @@ const Inputs=({ type, name, valor, ph, on})=>{
         value={valor}
         name={name}
         placeholder={ph}
-        onChange={on} />
+        onChange={on} required/>
 
         </div>
     )

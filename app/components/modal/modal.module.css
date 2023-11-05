@@ -10,7 +10,7 @@
   left: 0;
   top: 0;
   width: 50%;
-  height: 86%;
+
   color: aliceblue;
   background-color: rgb(36, 36, 36);
   border: solid 1px orange;
@@ -74,13 +74,19 @@
 
 @media (max-width: 768px) {
   .modal {
-    width: 80%;
-    margin-left: 5%;
+    width: 95%;
+    margin-left: 2.5%;
     padding: 3%;
+
   }
 
   .botao {
     padding: 4%;
+  }
+
+  .bt {
+   
+    width: 100%;
   }
 
   .texto {

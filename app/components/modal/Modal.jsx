@@ -14,8 +14,10 @@ const Modal = ({ foto, descricao, nome, oc, on, fechar }) => {
             <h2 className={styles.titulo}>{nome}</h2>
             <img className={styles.imagem} src={foto} width={200} height={200}/>
             <p className={styles.texto}>{descricao}</p>
+            <div className={styles.bt}>
             <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={oc} text={'Excluir'} />
             <Buttons bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={on} text={'Editar'} />
+            </div>
           </div>
         </div>
        
