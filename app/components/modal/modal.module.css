@@ -74,16 +74,22 @@
 
 @media (max-width: 768px) {
   .modal {
-    width: 80%;
-    margin-left: 5%;
+    width: 95%;
+    margin-left: 2.5%;
     padding: 3%;
+
   }
 
   .botao {
     padding: 4%;
   }
 
+  .bt {
+    margin-top: 7%;
+    width: 100%;
+  }
+
   .texto {
-    font-size: 14px;
+    font-size: 20px;
   }
 }
