@@ -44,7 +44,7 @@
   border-radius: 100%;
   background-color: #ff7803b9;
   margin-left: 90%;
-  color: #fff;
+  color: hsl(0, 0%, 100%);
   border: none;
 }
 

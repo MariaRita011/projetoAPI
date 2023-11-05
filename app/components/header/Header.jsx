@@ -7,25 +7,9 @@ const HeaderDefault = () => {
 
     return (
         <div className={styles.header2}>
-            <div className={styles.menu2}>
-
-                <div className={styles.icon_header}>
-                    {/* <AiOutlineMenu /> */}
-                </div>
-
-                <div className={styles.imageLogo}>
-                    <Image className={styles.logo} src={'/logo2.png'} width={45} height={45} />
-                </div>
-
-            </div>
 
             <div className={styles.header}>
-            <div className={styles.imageLogo1}>
-                    <Image className={styles.logo1} src={'/logo2.png'} width={45} height={45} />
-                </div>
-                {/* <div className={styles.icon_header}>
-                    <AiOutlineMenu />
-                </div> */}
+            
                 <div className={styles.icon_header2}>
 
                {/*      <AiOutlineClose /> */}
@@ -38,11 +22,14 @@ const HeaderDefault = () => {
 
 
                     <div className={styles.linka}>
-                        <Link href={'/paginahome'}>Home</Link>
+                        <Link className={styles.linksL} href={'/paginahome'}>Home</Link>
                     </div>
 
-                    <div className={styles.linka2}>
-                           <Link href={'/Armas'}>Cadastro</Link>
+                    <div className={styles.linka}>
+                           <Link className={styles.linksL} href={'/Armas'}>Cadastro</Link>
+                    </div>
+                    <div className={styles.linka}>
+                           <Link className={styles.linksL} href={'/sobrenos'}>Sobre Nós</Link>
                     </div>
                 </div>
 
