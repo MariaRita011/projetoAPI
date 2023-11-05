@@ -191,11 +191,12 @@ font-size: 20px;
   }
 
   .divForm {
-    width: 70%;
+    width: 85%;
     text-align: center;
     align-items: center;
-    left: 15%;
+    left: 7%;
     padding: 0;
+    padding: 1%;
   }
 }
 
