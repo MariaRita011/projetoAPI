@@ -366,7 +366,7 @@ function page() {
 
 
             </div>
-            {/* <Footer /> */}
+             <Footer /> 
         </div>
     )
 }
