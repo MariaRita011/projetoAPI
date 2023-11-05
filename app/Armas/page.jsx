@@ -15,8 +15,8 @@ import Modal from '../components/modal/Modal';
 import HeaderDefault from '../components/header/Header';
 import { Footer } from '../components/footer/footer';
 import Inputs from '../components/inputs/Inputs';
-import { AiOutlineArrowDown } from "react-icons/ai";
-import { AiOutlineArrowUp } from "react-icons/ai";
+/* import { AiOutlineArrowDown } from "react-icons/ai";
+import { AiOutlineArrowUp } from "react-icons/ai"; */
 
 //Criando instância da lista
 const listaAgentes = new ListaAgentes();
@@ -299,8 +299,8 @@ function page() {
 
                 <div className={styles.searchDiv}>
 
-                    <div className={styles.btnscroll} onClick={btnscroll}><AiOutlineArrowUp className={styles.arrows} /></div>
-                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>< AiOutlineArrowDown className={styles.arrows} /></div>
+                    <div className={styles.btnscroll} onClick={btnscroll}>{/* <AiOutlineArrowUp className={styles.arrows} /> */}</div>
+                    <div className={styles.btnscroll2} onClick={btnscrolldawn}>{/* < AiOutlineArrowDown className={styles.arrows} /> */}</div>
                 </div>
 
                 <div className={styles.divInput}>
