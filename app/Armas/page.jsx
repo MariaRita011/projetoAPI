@@ -7,10 +7,8 @@ import Cards from '@/data/armas';
 import ListaAgentes from '@/models/ListaAgentes';
 import Agente from '@/models/agente';
 import CardsAgents from '../components/cardsAgents/CardsAgents';
-import Buttons from '../components/buttons/Buttons';
 import ButtonsAct from '../components/buttonsact/ButtonsAct';
 import NavMsg from '../components/navmsg/NavMsg';
-
 import Modal from '../components/modal/Modal';
 import HeaderDefault from '../components/header/Header';
 import { Footer } from '../components/footer/footer';
