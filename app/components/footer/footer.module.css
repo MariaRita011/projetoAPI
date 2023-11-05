@@ -3,8 +3,14 @@
     gap: 30%;
     padding: 2%;
     display: flex;
-
+    width: 100%;
     margin-bottom: -20%;
+    margin-top: 1rem;
+}
+
+.direitos {
+    color: #ccc;
+    font-size: 12px;
     width: 100%;
 }
 
@@ -20,32 +26,25 @@
 .container2 {
     border-left: 2px solid rgb(245, 121, 5);
     padding: 2%;
-    text-align: center;
-    width: 200%;
+    width: 100%;
 }
-
-.direitos {
-    text-align: center;
-    margin-top: 40%;
-}
-
-/*.icons{
-    gap: 1rem;
-}*/
 
 .icons {
     display: flex;
-    color: #fff;
-    gap: 10px;
-    margin-top: 25%;
-    margin-left: 15%;
-    width: 100%;
-    margin-right: 30px;
+}
+.icon {
+    margin: 0.3rem;
+    color: #ccc;
+    font-size: 30px;
 }
 
-
 @media (max-width: 600px){
-    .container{
-        width: 100%;
+    .container {
+        margin-bottom: -50%;
+        flex-direction: column;
     }
+    .container2 {
+        margin-bottom: 2rem;
+    }
+
 }

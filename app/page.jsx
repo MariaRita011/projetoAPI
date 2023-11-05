@@ -9,6 +9,7 @@ import styles from './page.module.css'
 
 import NavMsg from './components/navmsg/NavMsg'
 import Inputs from './components/inputs/Inputs'
+import { Footer } from './components/footer/footer'
 const Home = () => {
   const [nome, setNome] = useState('')
   const [data, setData] = useState('')
@@ -122,7 +123,7 @@ const Home = () => {
 
 
       </div>
-
+<Footer />
     </main>
   )
 }
