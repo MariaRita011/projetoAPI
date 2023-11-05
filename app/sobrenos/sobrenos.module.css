@@ -1,6 +1,120 @@
-.container{
-  background-color: rgb(58, 58, 58);
-    height: 100vh;
-    color: white;
-    width: 100%;
+.divMain {
+  background-image: url(../../public/background.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  padding-top: 10%;
+}
+
+
+.container {
+  -webkit-box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -18px 40px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  box-shadow: #FFF 0 -1px 4px, #ff0 0 -2px 10px, #ff8000 0 -10px 20px, red 0 -18px 40px, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+  width: 100vh;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background-color: rgb(28, 28, 28);
+  border-radius: 20px;
+
+}
+
+.btnTodos {
+  flex-direction: column;
+  display: flex;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.h1 {
+  color: #fff;
+  text-align: center;
+  margin-top: -4%;
+  font-size: 30px;
+}
+
+.ladoDireito {
+  background: #393939;
+  height: 89%;
+  display: flex;
+  width: 350px;
+  margin: auto;
+  border-radius: 20px;
+  box-shadow: 11px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 11px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 11px 10px 42px 0px rgba(0, 0, 0, 0.75);
+  
+}
+
+
+.p{
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 25px;
+  
+}
+
+
+.butao {
+  border: transparent;
+  background-color: transparent;
+  display: block;
+  opacity: 0.5;
+  height: 40px;
+  text-align: center;
+  line-height: 50px;
+  color: #fff;
+}
+
+.image {
+  border-radius: 70px;
+}
+
+
+
+
+.butao:hover {
+  color: #ff8000;
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+@media (max-width: 780px) {
+
+  .container{
+    height: 60%;
+    width: 95%;
+  }
+
+  .ladoDireito{
+    width: 60%;
+    height: 60%;
+  }
+
+  .p{
+    font-size: 19px;
+  }
+
+  .image{
+
+    width: 50%;
+    height: 50%;
+    
+  }
+
+
 }
