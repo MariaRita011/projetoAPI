@@ -7,7 +7,14 @@
 .main{
 padding-top:1% ;
 }
-
+.erros{
+  width: 40%;
+ margin-left: 30%;
+}
+.erros2{
+  width: 30%;
+ margin-left: 35%;
+}
 /* TELA 1 */
 .cardsContainer {
   text-align: center;
@@ -229,9 +236,13 @@ font-size: 20px;
     width: 90%;
     text-align: center;
   }
-
+  .erros, .erros2{
+    width: 90%;
+    margin-left: 5% ;
+  }
   .divInput {
    flex-direction: column;
+  
   }
   .searchInput {
     padding: 0.3rem 1rem;

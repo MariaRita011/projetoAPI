@@ -74,6 +74,7 @@ function page() {
 
         } else {
             setAgentesFiltrados(agentesFiltrados);
+            setSearch('')
         }
 
     }
@@ -242,7 +243,7 @@ function page() {
 
         <div className={styles.main} >
 
-            <HeaderDefault /> 
+            <HeaderDefault />
 
 
             {/* Tela 1 */}
@@ -253,9 +254,9 @@ function page() {
 
                     <div className={styles.divInp}>
                         <div className={styles.sla}>
-                            <Inputs type={'text'} valor={name} name={'name'} ph={'Nome do agente'} on={(e) => setName(e.target.value)}/>
-                            <Inputs type={'text'} valor={description} name={'description'} ph={'Descrição do agente'} on={(e) => setDescription(e.target.value)}/>
-                            <Inputs type={'text'} valor={image} name={'image'} ph={'Imagem do agente'} on={(e) => setImage(e.target.value)}/>
+                            <Inputs type={'text'} valor={name} name={'name'} ph={'Nome do agente'} on={(e) => setName(e.target.value)} />
+                            <Inputs type={'text'} valor={description} name={'description'} ph={'Descrição do agente'} on={(e) => setDescription(e.target.value)} />
+                            <Inputs type={'text'} valor={image} name={'image'} ph={'Imagem do agente'} on={(e) => setImage(e.target.value)} />
 
                         </div>
 
@@ -275,22 +276,23 @@ function page() {
                         </>
                     )}
 
+                    <div className={styles.erros}>
+                        {//mensagem de erro
 
-                    {//mensagem de erro
+                            erro ? <NavMsg tipo={"erro"} msg={'Preecha os campos'} /> : null
 
-                        erro ? <NavMsg tipo={"erro"} msg={'Preecha os campos'} /> : null
+                        }
+                        {//mensagem de erro
 
-                    }
-                    {//mensagem de erro
+                            url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
 
-                        url ? <NavMsg tipo={"erro"} msg={'url inválida'} /> : null
+                        }
+                        {//mensagem de erro
 
-                    }
-                    {//mensagem de erro
+                            sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
 
-                        sucesso ? <NavMsg tipo={"sucesso"} msg={'Parabéns, agente cadastrado com sucesso!'} /> : null
-
-                    }
+                        }
+                    </div>
                 </div>
             </div>
 
@@ -313,24 +315,25 @@ function page() {
                         placeholder={'Digite Aqui'}
                     />
                     <div className={styles.butonsDivInput}>
-                    <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
-                    <ButtonsAct bdcor={'rgba(0, 0, 0, 0)'} bkcor={'#FA7115'} cor={'black'} func={mudar} text={'Voltar'} />
+                        <ButtonsAct bdcor={'#FA7115'} bkcor={'rgba(0, 0, 0, 0)'} cor={'#FA7115'} func={pesquisar} text={'Buscar'} />
+                        <ButtonsAct bdcor={'rgba(0, 0, 0, 0)'} bkcor={'#FA7115'} cor={'black'} func={mudar} text={'Voltar'} />
                     </div>
 
                 </div>
+                <div className={styles.erros2}>
 
-                {
-                    erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
-                }
+                    {
+                        erroDiv2 ? <NavMsg tipo={"erro"} msg={'Digite um agente!'} /> : null
+                    }
 
-                {
-                    erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
-                }
-
+                    {
+                        erro2Div2 ? <NavMsg tipo={"erro"} msg={'Agente não encontrado!'} /> : null
+                    }
+                </div>
                 <div className={styles.cardsContainer}>
 
                     {
-                        agentesFiltrados.length > 0 ? (
+                        agentesLista ? (agentesFiltrados.length > 0 ? (
                             agentesFiltrados.map((agente) => (
                                 <div onClick={() => openModal(agente.id)} id={agente.id} className={styles.cards} key={agente.id}>
                                     <CardsAgents nm={agente.name} img={agente.image} />
@@ -345,7 +348,7 @@ function page() {
                                 </div>
 
                             ))
-                        )
+                        )) : <p>Carregando..</p>
                     }
                     <div className={styles.modalContainer}>
                         {
@@ -366,7 +369,7 @@ function page() {
 
 
             </div>
-             <Footer /> 
+            <Footer />
         </div>
     )
 }
