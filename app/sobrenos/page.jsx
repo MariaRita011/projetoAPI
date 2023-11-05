@@ -76,7 +76,7 @@ export default function SobreNos() {
                 <div className={styles.ladoDireito}>
                     
                   
-                    <Image className={styles.image} src={image} width={260} height={140}/>
+                    <Image className={styles.image} src={image} width={200} height={190}/>
                     <div className={styles.teste}>
                     <h1 className={styles.nome}>{conteudo}</h1>
                     <p className={styles.p}> {description}</p>
