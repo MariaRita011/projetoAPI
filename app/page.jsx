@@ -42,8 +42,10 @@ const [link, setLink] = useState('')
 
   return (
     <main className={styles.main}>
+
       <h1  className={styles.title}>Faça seu login antes de entrar no site!</h1>
       <div className={styles.containerLogin}>
+
       <Inputs type={'text'} valor={nome} name={'nome'} ph={"Digite seu nome"} on={(e) => setNome(e.target.value)}/>
       <Inputs type={'date'} valor={data} name={'data'} ph={"Digite sua data de aniverário"} on={(e) => setData(e.target.value)}/>
       <Inputs type={'number'} valor={tell} name={'tell'} ph={"Digite seu telefone"} on={(e) => setTell(e.target.value)}/>
