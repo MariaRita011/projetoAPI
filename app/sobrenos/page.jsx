@@ -52,7 +52,7 @@ export default function SobreNos() {
 
     function Agente6() {
         setRenderizar(true);
-        setConteudo("Nicolas");
+        setConteudo("Nickolas");
         setDescription("Aluno de desenvolvimento de sistemas, cursando  seu primeiro ano");
         setImage("/nicolas.jpg")
     }
