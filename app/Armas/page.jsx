@@ -150,17 +150,17 @@ function page() {
 
     //Function de excluir um agente
     const excluir = (param) => {
-        listaAgentes.excluirAgente(param); 
+        listaAgentes.excluirAgente(param);
         const novaListaAgentes = listaAgentes.getListaAgentes();
         setAgentesLista(novaListaAgentes);
-    
+
         // Atualizando a lista filtrada após a exclusão
         const novaListaFiltrada = novaListaAgentes.filter(agente => {
             return agente.name.toLowerCase().includes(search.toLowerCase());
         });
-    
+
         setAgentesFiltrados(novaListaFiltrada);
-       
+
     };
 
     //Function de editar um agente
@@ -203,6 +203,7 @@ function page() {
         }
 
     }
+
 
     useEffect(() => {
 
@@ -357,13 +358,13 @@ function page() {
                                 </div>
 
                             ))
-                        )) :( <RotatingLines
-                        strokeColor="orange"
-                        strokeWidth="5"
-                        animationDuration="0.75"
-                        width="96"
-                        visible={true}
-                      />)
+                        )) : (<RotatingLines
+                            strokeColor="orange"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="96"
+                            visible={true}
+                        />)
                     }
                     <div className={styles.modalContainer}>
                         {

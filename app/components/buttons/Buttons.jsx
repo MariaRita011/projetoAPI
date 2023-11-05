@@ -10,5 +10,6 @@ const Buttons = ({ func, text, bkcor, cor, bdcor}) => {
     return (
            <button onClick={func} style={buttonStyle} className={styles.button} >{text}</button>
     )
+    
 }
 export default Buttons

@@ -28,6 +28,7 @@
     transition: border-width 0.3s;
     border-width: 0px;
 }
+
 .linksL:hover {
     border-bottom: 2px solid orange;
     border-width: 4px;
@@ -48,9 +49,11 @@
     .header {
         height: 4rem;
     }
+
     .linksL {
         font-size: 12px;
     }
+
     .imagem {
         margin-top: -5%;
     }
