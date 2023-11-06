@@ -111,7 +111,7 @@
 @media (max-width: 780px) {
 
   .container {
-    height: 110%;
+    height: 115%;
     width: 95%;
     flex-direction: column;
     margin-top: 35%;
@@ -119,7 +119,7 @@
 
   .ladoDireito {
     width: 80%;
-    height: 50%;
+    
 
   }
 
