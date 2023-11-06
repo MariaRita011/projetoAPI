@@ -35,7 +35,7 @@ const Home = () => {
                         <p className={styles.text}>Counter-Strike: Global Offensive foi um jogo online desenvolvido pela Valve Corporation e pela Hidden Path Entertainment, sendo uma sequência de Counter-Strike: Source. É o quarto título principal da franquia.</p>
                     </div>
                     <div className={styles.textsDivs}>
-                        <CardPageHome titulo={'Para que serve nosso site?'} p={'Se você é um verdadeiro jogador de CSGO e quer desfrutar mais afundo de nossas skins de agentes, dar novas ideias de novas skins para serem adicionadas no jogo ou até mesmo mudar um pouco as skins já existentes? Você veio ao lugar certo! Na CSGO Agentes é possível encontrar uma personalização ilimitada de agentes. Gostou da ideia? Clique logo abaixo e confira tudo!'} />
+                        <CardPageHome titulo={'Para que serve nosso site?'} p={'Se você é um verdadeiro jogador de CSGO e quer desfrutar mais afundo de nossas skins de agentes, dar novas ideias de novas skins para serem adicionadas no jogo ou até mesmo mudar um pouco as skins já existentes? Você veio ao lugar certo! Na "CSGO Agentes" é possível encontrar uma personalização ilimitada de agentes. Gostou da ideia? Clique logo abaixo e confira tudo!'} />
                     </div>
                     <button className={styles.button}><a className={styles.buttontext} href="/Armas" target="_blank">Confira Aqui!</a></button>
                 </div>
